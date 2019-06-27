@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131475AF22C53146008613D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131475AE22C53146008613D7 /* MapKit.framework */; };
 		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
 		13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623822C126AD00D5F6D2 /* ViewController.swift */; };
 		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131475AE22C53146008613D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		131475B022C55F86008613D7 /* EnteredRegion.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnteredRegion.gpx; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E7623822C126AD00D5F6D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				131475AF22C53146008613D7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131475AD22C53146008613D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				131475AE22C53146008613D7 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		13E7622A22C126AD00D5F6D2 = {
 			isa = PBXGroup;
 			children = (
+				131475B022C55F86008613D7 /* EnteredRegion.gpx */,
 				13E7623522C126AD00D5F6D2 /* AmissaCare */,
 				13E7624A22C126AE00D5F6D2 /* AmissaCareTests */,
 				13E7625522C126AE00D5F6D2 /* AmissaCareUITests */,
 				13E7623422C126AD00D5F6D2 /* Products */,
+				131475AD22C53146008613D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +207,14 @@
 				TargetAttributes = {
 					13E7623222C126AD00D5F6D2 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					13E7624622C126AE00D5F6D2 = {
 						CreatedOnToolsVersion = 10.2.1;

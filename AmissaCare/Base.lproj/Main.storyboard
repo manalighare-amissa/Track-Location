@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q8B-V7-ODI">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q8B-V7-ODI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XF-Me-XWj">
@@ -31,24 +31,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="AHs-GX-8qE">
-                                <rect key="frame" x="187" y="408" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="bGC-bp-DGn"/>
-                                    <constraint firstAttribute="height" constant="40" id="jd5-px-8D3"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0XF-Me-XWj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Po-fr-pho"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q8B-V7-ODI" secondAttribute="trailing" id="3dW-kH-xqa"/>
                             <constraint firstItem="Q8B-V7-ODI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DC6-Gi-xKb"/>
-                            <constraint firstItem="AHs-GX-8qE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20" id="O37-Vp-7NN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0XF-Me-XWj" secondAttribute="trailing" id="Sjr-hm-CMS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0XF-Me-XWj" secondAttribute="bottom" id="ZJT-cX-WEg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Q8B-V7-ODI" secondAttribute="bottom" id="aVU-sq-0Dg"/>
-                            <constraint firstItem="AHs-GX-8qE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g47-aR-6Pb"/>
                             <constraint firstItem="Q8B-V7-ODI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pfe-12-IvE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -63,7 +54,4 @@
             <point key="canvasLocation" x="-3044.9275362318845" y="-1137.7232142857142"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Pin" width="16" height="46"/>
-    </resources>
 </document>

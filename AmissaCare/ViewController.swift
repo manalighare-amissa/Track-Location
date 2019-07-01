@@ -23,11 +23,16 @@ class ViewController: UIViewController {
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
     
+    var latitude: Double?
+    var longitude: Double?
+    
     //var previousLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,18 +55,18 @@ class ViewController: UIViewController {
             
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
-            locationManager.distanceFilter = 20
+            locationManager.distanceFilter = 1
             center.requestAuthorization(options: [.alert, .sound]) {(granted,error) in }
             
-            let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(35.3112,-80.74300), radius: 20, identifier: "Charlotte")
+            let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: 1, identifier: "Charlotte")
 
             
-            content.title = "Location Update"
-            content.body = "You have entered a new region!"
+            content.title = "Patient Location Update"
+            content.body = "Patient exited the monitored region"
             content.sound = UNNotificationSound.default
             
             locationManager.startMonitoring(for: geoFenceRegion)
-            print(locationManager.monitoredRegions)
+            //print(locationManager.monitoredRegions)
         }
     }
     
@@ -89,7 +94,7 @@ class ViewController: UIViewController {
             // Show alert instructing them how to turn on permissions
             break
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
         case .restricted:
             // Show an alert letting them know what's up
             break
@@ -102,13 +107,6 @@ class ViewController: UIViewController {
         locationManager.startUpdatingLocation()
         //previousLocation = getCenterLocation(for: mapView)
     }
-    
-    /*func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        let latitude = mapView.centerCoordinate.latitude
-        let longitude = mapView.centerCoordinate.longitude
-        
-        return CLLocation(latitude: latitude, longitude: longitude)
-    }*/
 }
 
 
@@ -123,34 +121,6 @@ extension ViewController: CLLocationManagerDelegate {
         let center = locations[0] as CLLocation
         let geoCoder = CLGeocoder()
         
-        /*
-        guard let previousLocation = self.previousLocation else { return }
-         
-         guard center.distance(from: previousLocation) > 20 else { return }
-         self.previousLocation = center
-
-         geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
-         
-            if let _ = error {
-                //TODO: Show alert informing the user
-                return
-            }
-         
-            guard let placemark = placemarks?.first else {
-                //TODO: Show alert informing the user
-                return
-            }
-         
-            let streetNumber = placemark.subThoroughfare ?? ""
-            let streetName = placemark.thoroughfare ?? ""
-            let subLocality = placemark.subLocality ?? ""
-         
-            DispatchQueue.main.sync {
-                self.addressLabel.text = " \(streetNumber) \(streetName) \(subLocality)"
-            }
-         }*/
-
         geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
             let placeMarks = data as! [CLPlacemark]
             let loc: CLPlacemark = placeMarks[0]
@@ -161,6 +131,7 @@ extension ViewController: CLLocationManagerDelegate {
             let streetName = loc.thoroughfare ?? ""
             let subLocality = loc.subLocality ?? ""
             self.addressLabel.text = "\(streetNumber) \(streetName) \(subLocality),\(city)"
+            //self.addressLabel.text = "\(self.latitude!) \(self.longitude!)"
             
             self.centerViewOnUserLocation()
         })

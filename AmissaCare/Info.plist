@@ -8,6 +8,10 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleDisplayName</key>
+	<string>AmissaCare</string>
+	<key>CFBundleIconName</key>
+	<string>AmissaLogo</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -21,6 +25,8 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Always being monitored</string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Always being monitored</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This is why we need your location</string>

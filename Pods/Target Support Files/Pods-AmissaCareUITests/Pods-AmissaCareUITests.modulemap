@@ -1,0 +1,6 @@
+framework module Pods_AmissaCareUITests {
+  umbrella header "Pods-AmissaCareUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

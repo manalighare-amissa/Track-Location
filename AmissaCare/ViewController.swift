@@ -12,6 +12,8 @@ import UIKit
 import MapKit
 import CoreLocation
 import UserNotifications
+import Firebase
+import FirebaseDatabase
 
 class ViewController: UIViewController {
     
@@ -23,16 +25,39 @@ class ViewController: UIViewController {
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
     
+    let annotation = MKPointAnnotation()
+    
     var latitude: Double?
     var longitude: Double?
+    
+    
+    var lat: Double?
+    var long: Double?
+    
+    var ref: DatabaseReference!
+    
     
     //var previousLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        ref = Database.database().reference()
         
+        ref?.child("BB2b8n8hbZYdBerINFismvl454W2").child("location").observe(.value, with:{ (DataSnapshot) in
+            let snapshot = DataSnapshot.value as? NSDictionary
+            
+            self.lat = snapshot!["lat"] as? Double
+            self.long = snapshot!["long"] as? Double
+
+            print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
+            
+            self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
+            self.mapView.addAnnotation(self.annotation)
+            self.annotation.title = "Patient's Location"
+        })
         
+      
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +76,7 @@ class ViewController: UIViewController {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
-            mapView.showsUserLocation = true
+            //mapView.showsUserLocation = true
             
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
@@ -102,7 +127,6 @@ class ViewController: UIViewController {
     }
     
     func startTackingUserLocation() {
-        mapView.showsUserLocation = true
         centerViewOnUserLocation()
         locationManager.startUpdatingLocation()
         //previousLocation = getCenterLocation(for: mapView)

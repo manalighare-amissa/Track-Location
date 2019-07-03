@@ -15,8 +15,10 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+                  symbolName = "bundleDataBuffer"
+                  moduleName = "VectorKit"
                   usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
+                  offsetFromSymbolStart = "363386">
                </Location>
             </Locations>
          </BreakpointContent>

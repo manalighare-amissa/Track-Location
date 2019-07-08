@@ -10,7 +10,6 @@
 		096D4180BD24003620C14191 /* Pods_AmissaCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */; };
 		131475AF22C53146008613D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131475AE22C53146008613D7 /* MapKit.framework */; };
 		133931B722C94D20008C4762 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133931B622C94D20008C4762 /* LocationController.swift */; };
-		1378A2A522CD0D1200171849 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1378A2A422CD0D1200171849 /* GoogleService-Info.plist */; };
 		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
 		13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623822C126AD00D5F6D2 /* ViewController.swift */; };
 		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
@@ -18,6 +17,7 @@
 		13E7624122C126AE00D5F6D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */; };
 		13E7624C22C126AE00D5F6D2 /* AmissaCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7624B22C126AE00D5F6D2 /* AmissaCareTests.swift */; };
 		13E7625722C126AE00D5F6D2 /* AmissaCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7625622C126AE00D5F6D2 /* AmissaCareUITests.swift */; };
+		13ECE75A22D3D12100A2A88C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */; };
 		2C201CBA83F0FCC9432D1F1C /* Pods_AmissaCareUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DE8BECAA3A6C669994A53 /* Pods_AmissaCareUITests.framework */; };
 		53EA56FAF823F3FF59072A99 /* Pods_AmissaCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB860510FF000F0DB397E0F0 /* Pods_AmissaCareTests.framework */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,6 @@
 		131475AE22C53146008613D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		131475B022C55F86008613D7 /* EnteredRegion.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnteredRegion.gpx; sourceTree = "<group>"; };
 		133931B622C94D20008C4762 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
-		1378A2A422CD0D1200171849 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E7623822C126AD00D5F6D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		13E7625222C126AE00D5F6D2 /* AmissaCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmissaCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7625622C126AE00D5F6D2 /* AmissaCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmissaCareUITests.swift; sourceTree = "<group>"; };
 		13E7625822C126AE00D5F6D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D5FEF40A9ED45648FB75AFE /* Pods-AmissaCareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareUITests.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCareUITests/Pods-AmissaCareUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BB6066F41F3376C39E3FA6F /* Pods-AmissaCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareTests.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCareTests/Pods-AmissaCareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F9EEEB13C0928E72DD8101C /* Pods-AmissaCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareTests.release.xcconfig"; path = "Target Support Files/Pods-AmissaCareTests/Pods-AmissaCareTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 				13E7623D22C126AE00D5F6D2 /* Assets.xcassets */,
 				13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */,
 				13E7624222C126AE00D5F6D2 /* Info.plist */,
-				1378A2A422CD0D1200171849 /* GoogleService-Info.plist */,
+				13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */,
 			);
 			path = AmissaCare;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E7624122C126AE00D5F6D2 /* LaunchScreen.storyboard in Resources */,
-				1378A2A522CD0D1200171849 /* GoogleService-Info.plist in Resources */,
+				13ECE75A22D3D12100A2A88C /* GoogleService-Info.plist in Resources */,
 				13E7623E22C126AE00D5F6D2 /* Assets.xcassets in Resources */,
 				13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */,
 			);

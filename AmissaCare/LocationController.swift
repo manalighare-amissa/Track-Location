@@ -26,8 +26,6 @@ class LocationController: UIViewController {
     }
     
     @IBAction func locationMonitor(_ sender: UIButton) {
-        //print("****")
-        
     
         guard let addressText = address.text else { return }
         
@@ -50,6 +48,7 @@ class LocationController: UIViewController {
             let destination = segue.destination as! ViewController
             destination.latitude = locationLatitude
             destination.longitude = locationLongitude
+            destination.geofenceRadius = Double(radius.text!)
         }
         
         

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
     let locationManager:CLLocationManager = CLLocationManager()
-    let regionInMeters: Double = 8000
+    let regionInMeters: Double = 800
     
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     var latitude: Double?
     var longitude: Double?
+    var geofenceRadius: Double?
     
     
     var lat: Double?
@@ -44,17 +45,34 @@ class ViewController: UIViewController {
         checkLocationServices()
         ref = Database.database().reference()
         
-        ref?.child("BB2b8n8hbZYdBerINFismvl454W2").child("location").observe(.value, with:{ (DataSnapshot) in
+        ref?.child("ccNCzyAUZEYVV9utgCk7fezqq623").child("location").observe(.value, with:{ (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
             
             self.lat = snapshot!["lat"] as? Double
             self.long = snapshot!["long"] as? Double
 
-            print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
+            //print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
             
             self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
             self.mapView.addAnnotation(self.annotation)
             self.annotation.title = "Patient's Location"
+            
+            let center = CLLocation(latitude: self.lat!, longitude: self.long!)
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
+                let placeMarks = data as! [CLPlacemark]
+                let loc: CLPlacemark = placeMarks[0]
+                
+                self.mapView.centerCoordinate = center.coordinate
+                let city = loc.locality ?? ""
+                let streetNumber = loc.subThoroughfare ?? ""
+                let streetName = loc.thoroughfare ?? ""
+                let subLocality = loc.subLocality ?? ""
+                self.addressLabel.text = "\(streetNumber) \(streetName) \(subLocality) \(city)"
+                
+                self.centerViewOnUserLocation()
+            })
         })
         
       
@@ -73,26 +91,27 @@ class ViewController: UIViewController {
     
     func centerViewOnUserLocation() {
         
-        if let location = locationManager.location?.coordinate {
+        let location = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
             let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
-            //mapView.showsUserLocation = true
             
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
-            locationManager.distanceFilter = 1
+            locationManager.distanceFilter = 100
             center.requestAuthorization(options: [.alert, .sound]) {(granted,error) in }
             
-            let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: 1, identifier: "Charlotte")
+        let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
 
-            
+            //print(geofenceRadius)
             content.title = "Patient Location Update"
             content.body = "Patient exited the monitored region"
             content.sound = UNNotificationSound.default
             
             locationManager.startMonitoring(for: geoFenceRegion)
+            let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: 100)
+            mapView.addOverlay(circle)
             //print(locationManager.monitoredRegions)
-        }
+        
     }
     
     
@@ -141,24 +160,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        centerViewOnUserLocation()
-        let center = locations[0] as CLLocation
-        let geoCoder = CLGeocoder()
-        
-        geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
-            let placeMarks = data as! [CLPlacemark]
-            let loc: CLPlacemark = placeMarks[0]
-            
-            self.mapView.centerCoordinate = center.coordinate
-            let city = loc.locality ?? ""
-            let streetNumber = loc.subThoroughfare ?? ""
-            let streetName = loc.thoroughfare ?? ""
-            let subLocality = loc.subLocality ?? ""
-            self.addressLabel.text = "\(streetNumber) \(streetName) \(subLocality),\(city)"
-            //self.addressLabel.text = "\(self.latitude!) \(self.longitude!)"
-            
-            self.centerViewOnUserLocation()
-        })
+
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
@@ -175,6 +177,19 @@ extension ViewController: CLLocationManagerDelegate {
         let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+}
+
+extension ViewController: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let circleOverlay = overlay as? MKCircle else { return
+            MKOverlayRenderer()
+        }
+        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
+        //circleRenderer.strokeColor = nil
+        circleRenderer.fillColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        circleRenderer.alpha = 0.1
+        return circleRenderer
     }
 }
 

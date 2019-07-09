@@ -9,6 +9,7 @@ target 'AmissaCare' do
   pod 'Firebase/Core'
   
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
 
 

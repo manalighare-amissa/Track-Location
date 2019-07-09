@@ -10,6 +10,8 @@
 		096D4180BD24003620C14191 /* Pods_AmissaCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */; };
 		131475AF22C53146008613D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131475AE22C53146008613D7 /* MapKit.framework */; };
 		133931B722C94D20008C4762 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133931B622C94D20008C4762 /* LocationController.swift */; };
+		1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5ED22D514D0008EB058 /* SignInController.swift */; };
+		1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5EF22D5189A008EB058 /* SignUpController.swift */; };
 		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
 		13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623822C126AD00D5F6D2 /* ViewController.swift */; };
 		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		131475AE22C53146008613D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		131475B022C55F86008613D7 /* EnteredRegion.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnteredRegion.gpx; sourceTree = "<group>"; };
 		133931B622C94D20008C4762 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		1370A5ED22D514D0008EB058 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		1370A5EF22D5189A008EB058 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E7623822C126AD00D5F6D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			children = (
 				13E7623622C126AD00D5F6D2 /* AppDelegate.swift */,
 				13E7623822C126AD00D5F6D2 /* ViewController.swift */,
+				1370A5ED22D514D0008EB058 /* SignInController.swift */,
+				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
 				133931B622C94D20008C4762 /* LocationController.swift */,
 				13E7623A22C126AD00D5F6D2 /* Main.storyboard */,
 				13E7623D22C126AE00D5F6D2 /* Assets.xcassets */,
@@ -407,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */,
 				13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */,
+				1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */,
 				133931B722C94D20008C4762 /* LocationController.swift in Sources */,
 				13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */,
 			);

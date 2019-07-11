@@ -48,6 +48,7 @@
 		133931B622C94D20008C4762 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		1370A5ED22D514D0008EB058 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		1370A5EF22D5189A008EB058 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		139FE30422D7C39D007823B8 /* AmissaCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AmissaCare.entitlements; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E7623822C126AD00D5F6D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		13E7623522C126AD00D5F6D2 /* AmissaCare */ = {
 			isa = PBXGroup;
 			children = (
+				139FE30422D7C39D007823B8 /* AmissaCare.entitlements */,
 				13E7623622C126AD00D5F6D2 /* AppDelegate.swift */,
 				13E7623822C126AD00D5F6D2 /* ViewController.swift */,
 				1370A5ED22D514D0008EB058 /* SignInController.swift */,
@@ -260,6 +262,9 @@
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -593,6 +598,7 @@
 			baseConfigurationReference = 05DE546E6B87464E173BB6E1 /* Pods-AmissaCare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AmissaCare/AmissaCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37CYGYQ97U;
 				INFOPLIST_FILE = AmissaCare/Info.plist;
@@ -612,6 +618,7 @@
 			baseConfigurationReference = A320504DC676A66BA30F7F9F /* Pods-AmissaCare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AmissaCare/AmissaCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37CYGYQ97U;
 				INFOPLIST_FILE = AmissaCare/Info.plist;

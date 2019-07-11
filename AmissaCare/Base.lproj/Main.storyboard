@@ -411,10 +411,16 @@
                                 <rect key="frame" x="0.0" y="33" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Amissa" id="JXU-Id-LFP">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="Lhw-if-sY6">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Lhw-if-sY6">
                                             <color key="tintColor" red="0.54927617311477661" green="0.77534586191177368" blue="0.24168312549591064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <segue destination="86e-Ea-rCT" kind="presentation" id="mGC-TJ-X7M"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="JnJ-2p-nzr">
+                                            <color key="tintColor" red="0.54927617311477661" green="0.77534586191177368" blue="0.24168312549591064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="onClickLogoutButton:" destination="BYZ-38-t0r" id="9VB-4U-Ro1"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -438,6 +444,7 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="0XF-Me-XWj" id="4lS-cd-kUx"/>
+                        <outlet property="logoutButton" destination="JnJ-2p-nzr" id="9V1-zN-N0w"/>
                         <outlet property="mapView" destination="Q8B-V7-ODI" id="HZb-OC-Svk"/>
                     </connections>
                 </viewController>
@@ -452,6 +459,6 @@
         <image name="googleLogo" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MtC-eK-Cj6"/>
+        <segue reference="mGC-TJ-X7M"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
+     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    
     let locationManager:CLLocationManager = CLLocationManager()
     let regionInMeters: Double = 800
     
@@ -31,14 +33,12 @@ class ViewController: UIViewController {
     var longitude: Double?
     var geofenceRadius: Double?
     
-    
     var lat: Double?
     var long: Double?
+    var distance: Double?
     
     var ref: DatabaseReference!
     
-    
-    //var previousLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,9 @@ class ViewController: UIViewController {
             let center = CLLocation(latitude: self.lat!, longitude: self.long!)
             let geoCoder = CLGeocoder()
             
+            self.checkWithinGeofenceRegion()
+            
+        
             geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
                 let placeMarks = data as! [CLPlacemark]
                 let loc: CLPlacemark = placeMarks[0]
@@ -78,6 +81,76 @@ class ViewController: UIViewController {
       
     }
     
+    @IBAction func onClickLogoutButton(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initial = storyboard.instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = initial
+        
+    }
+    
+    func haversineDinstance(la1: Double, lo1: Double, la2: Double, lo2: Double, radius: Double = 6367444.7) -> Double {
+        
+        let haversin = { (angle: Double) -> Double in
+            return (1 - cos(angle))/2
+        }
+        
+        let ahaversin = { (angle: Double) -> Double in
+            return 2*asin(sqrt(angle))
+        }
+        
+        // Converts from degrees to radians
+        let dToR = { (angle: Double) -> Double in
+            return (angle / 360) * 2 * .pi
+        }
+        
+        let lat1 = dToR(la1)
+        let lon1 = dToR(lo1)
+        let lat2 = dToR(la2)
+        let lon2 = dToR(lo2)
+        
+        let hDistance = radius * ahaversin(haversin(lat2 - lat1) + cos(lat1) * cos(lat2) * haversin(lon2 - lon1))
+        return hDistance
+    }
+    
+    func checkWithinGeofenceRegion(){
+        
+        let geofenceCenter = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
+        let PatientLocation = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
+        distance = 0
+        distance = haversineDinstance(la1: geofenceCenter.latitude, lo1: geofenceCenter.longitude, la2: PatientLocation.latitude, lo2: PatientLocation.longitude)
+        
+        if (Double(distance!) <= Double(geofenceRadius!)){
+            print("inside")
+            
+            content.title = "Patient Location Update"
+            content.body = "Patient is inside the monitored region"
+            content.sound = UNNotificationSound.default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
+        
+        }else{
+            print("outside")
+            
+            content.title = "Patient Location Update"
+            content.body = "Patient is outside of the monitored region"
+            content.sound = UNNotificationSound.default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -94,23 +167,18 @@ class ViewController: UIViewController {
         let location = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
             let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
-            
+        
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
             locationManager.distanceFilter = 100
             center.requestAuthorization(options: [.alert, .sound]) {(granted,error) in }
             
         let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
-
-            //print(geofenceRadius)
-            content.title = "Patient Location Update"
-            content.body = "Patient exited the monitored region"
-            content.sound = UNNotificationSound.default
-            
             locationManager.startMonitoring(for: geoFenceRegion)
-            let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: 100)
+        
+        let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!)
             mapView.addOverlay(circle)
-            //print(locationManager.monitoredRegions)
+        
         
     }
     
@@ -148,35 +216,6 @@ class ViewController: UIViewController {
     func startTackingUserLocation() {
         centerViewOnUserLocation()
         locationManager.startUpdatingLocation()
-        //previousLocation = getCenterLocation(for: mapView)
-    }
-}
-
-
-extension ViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("Entered region")
-    
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        
-        print("Exited region")
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
 
@@ -192,6 +231,27 @@ extension ViewController: MKMapViewDelegate{
         return circleRenderer
     }
 }
+
+
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entered region")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exited region")
+    }
+}
+
+
 
 
 

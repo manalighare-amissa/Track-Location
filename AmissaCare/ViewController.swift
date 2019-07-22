@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
-     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var heartRateButton: UIButton!
     
     let locationManager:CLLocationManager = CLLocationManager()
     let regionInMeters: Double = 800
@@ -33,9 +34,11 @@ class ViewController: UIViewController {
     var longitude: Double?
     var geofenceRadius: Double?
     
-    var lat: Double?
-    var long: Double?
+    var plat: Double?
+    var plong: Double?
     var distance: Double?
+    
+    var heartrate: UInt16?
     
     var ref: DatabaseReference!
     
@@ -45,22 +48,34 @@ class ViewController: UIViewController {
         checkLocationServices()
         ref = Database.database().reference()
         
-        ref?.child("ccNCzyAUZEYVV9utgCk7fezqq623").child("location").observe(.value, with:{ (DataSnapshot) in
+        
+        
+        ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
             
-            self.lat = snapshot!["lat"] as? Double
-            self.long = snapshot!["long"] as? Double
+            self.heartrate = snapshot!["heartRate"] as? UInt16
+            self.heartRateButton.setTitle("\(self.heartrate!)", for: .normal)
+            print("heartrate is:\(self.heartrate)")
+            
+        })
+        
+        ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").child("location").observe(.value, with:{ (DataSnapshot) in
+            
+                let snapshot = DataSnapshot.value as? NSDictionary
+            
+                self.plat = snapshot!["lat"] as? Double
+                self.plong = snapshot!["long"] as? Double
 
             //print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
             
-            self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
-            self.mapView.addAnnotation(self.annotation)
-            self.annotation.title = "Patient's Location"
+                self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
+                self.mapView.addAnnotation(self.annotation)
+                self.annotation.title = "Patient's Location"
             
-            let center = CLLocation(latitude: self.lat!, longitude: self.long!)
-            let geoCoder = CLGeocoder()
+                let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
+                let geoCoder = CLGeocoder()
             
-            self.checkWithinGeofenceRegion()
+                self.checkWithinGeofenceRegion()
             
         
             geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
@@ -77,6 +92,9 @@ class ViewController: UIViewController {
                 self.centerViewOnUserLocation()
             })
         })
+        
+        
+        
         
       
     }
@@ -122,35 +140,37 @@ class ViewController: UIViewController {
     func checkWithinGeofenceRegion(){
         
         let geofenceCenter = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
-        let PatientLocation = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
+        let PatientLocation = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
         distance = 0
         distance = haversineDinstance(la1: geofenceCenter.latitude, lo1: geofenceCenter.longitude, la2: PatientLocation.latitude, lo2: PatientLocation.longitude)
         
         if (Double(distance!) <= Double(geofenceRadius!)){
             print("inside")
             
-            content.title = "Patient Location Update"
+            /*content.title = "Patient Location Update"
             content.body = "Patient is inside the monitored region"
             content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
             
         
         }else{
             print("outside")
             
-            content.title = "Patient Location Update"
+           
+            /*content.title = "Patient Location Update"
             content.body = "Patient is outside of the monitored region"
             content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
         }
     }
     
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -171,7 +191,7 @@ class ViewController: UIViewController {
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
             locationManager.distanceFilter = 100
-            center.requestAuthorization(options: [.alert, .sound]) {(granted,error) in }
+        
             
         let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
             locationManager.startMonitoring(for: geoFenceRegion)

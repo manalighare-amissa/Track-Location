@@ -17,18 +17,38 @@ import FirebaseDatabase
 
 class ViewController: UIViewController {
     
+    enum SlidingSheetState{
+        case expanded
+        case collapsed
+    }
+    
+    //var slidingSheetcontroller:SlidingSheetController!
+    var visualEffectView: UIVisualEffectView!
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var heartRateButton: UIButton!
     
+    var slidingSheetVisible = false
+    var nextState:SlidingSheetState{
+        return slidingSheetVisible ? .collapsed : .expanded
+    }
+    
+    var runningAnimations = [UIViewPropertyAnimator]()
+    var animationProgressWhenInterrupted = 0
+    
+    let slidingSheetHeight:CGFloat = 600
+    let slidingSheetHandleAreaHeight:CGFloat = 65
+    
     let locationManager:CLLocationManager = CLLocationManager()
-    let regionInMeters: Double = 800
+    //let regionInMeters: Double = 6000
     
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
     
     let annotation = MKPointAnnotation()
+    var circleRenderer: MKCircleRenderer?
     
     var latitude: Double?
     var longitude: Double?
@@ -48,8 +68,6 @@ class ViewController: UIViewController {
         checkLocationServices()
         ref = Database.database().reference()
         
-        
-        
         ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
             
@@ -65,6 +83,8 @@ class ViewController: UIViewController {
             
                 self.plat = snapshot!["lat"] as? Double
                 self.plong = snapshot!["long"] as? Double
+            
+            // print("lat is: \(self.plat)")
 
             //print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
             
@@ -93,10 +113,55 @@ class ViewController: UIViewController {
             })
         })
         
+        locationManager.requestAlwaysAuthorization()
         
+        let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
+        locationManager.startMonitoring(for: geoFenceRegion)
         
+        let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!)
+        mapView.addOverlay(circle)
         
+        //setupSlidingSheet()
       
+    }
+    /*
+    func setupSlidingSheet(){
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.frame = self.view.frame
+        self.view.addSubview(visualEffectView)
+        
+        slidingSheetcontroller = SlidingSheetController(nibName: "SlidingSheetController", bundle: nil)
+        self.addChild(slidingSheetcontroller)
+        self.view.addSubview(slidingSheetcontroller.view)
+        
+        slidingSheetcontroller.view.frame = CGRect(x: 0, y: self.view.frame.height - slidingSheetHandleAreaHeight, width: self.view.bounds.width, height: slidingSheetHeight)
+        
+        slidingSheetcontroller.view.clipsToBounds = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSlidingSheetTap(recognizer:)))
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleSlidingSheetPan(recognizer:)))
+        
+        slidingSheetcontroller.handleArea.addGestureRecognizer(tapGestureRecognizer)
+        slidingSheetcontroller.handleArea.addGestureRecognizer(panGestureRecognizer)
+    }*/
+    
+    @objc func handleSlidingSheetTap(recognizer: UITapGestureRecognizer){
+        
+    }
+    
+    @objc func handleSlidingSheetPan(recognizer: UIPanGestureRecognizer){
+        /*
+        switch recognizer.state {
+        case .began:
+            //startTransition
+        case .changed:
+            //updateTransition
+        case .ended:
+            //continueTransition
+        default:
+            break
+        }*/
     }
     
     @IBAction func onClickLogoutButton(_ sender: Any) {
@@ -185,21 +250,19 @@ class ViewController: UIViewController {
     func centerViewOnUserLocation() {
         
         let location = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        let patientLocation = CLLocationCoordinate2D(latitude: plat!, longitude: plong!)
+        
+        let centerLat = (location.latitude + patientLocation.latitude) / 2
+        let centerLong = (location.longitude + patientLocation.longitude) / 2
+        
+        print("lat is:\(centerLat)")
+        
+        let centerDistance = haversineDinstance(la1: patientLocation.latitude, lo1: patientLocation.longitude, la2: location.latitude, lo2: location.longitude)
+        print("distance is:\(centerDistance)")
+        let centerLocation = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
+        
+        let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: geofenceRadius! + centerDistance + 2000, longitudinalMeters: geofenceRadius! + centerDistance + 2000)
             mapView.setRegion(region, animated: true)
-        
-            locationManager.requestAlwaysAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.distanceFilter = 100
-        
-            
-        let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
-            locationManager.startMonitoring(for: geoFenceRegion)
-        
-        let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!)
-            mapView.addOverlay(circle)
-        
-        
     }
     
     
@@ -219,7 +282,7 @@ class ViewController: UIViewController {
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
-            startTackingUserLocation()
+            locationManager.startUpdatingLocation()
         case .authorizedWhenInUse:
             break
         case .denied:
@@ -233,25 +296,23 @@ class ViewController: UIViewController {
         }
     }
     
-    func startTackingUserLocation() {
-        centerViewOnUserLocation()
-        locationManager.startUpdatingLocation()
-    }
 }
+
 
 extension ViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return
             MKOverlayRenderer()
         }
-        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-        //circleRenderer.strokeColor = nil
-        circleRenderer.fillColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-        circleRenderer.alpha = 0.1
-        return circleRenderer
+        circleRenderer = MKCircleRenderer(circle: circleOverlay)
+        circleRenderer!.fillColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        circleRenderer!.strokeColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        circleRenderer!.lineWidth = 4
+        circleRenderer!.alpha = 0.3
+        return circleRenderer!
+        
     }
 }
-
 
 extension ViewController: CLLocationManagerDelegate {
     

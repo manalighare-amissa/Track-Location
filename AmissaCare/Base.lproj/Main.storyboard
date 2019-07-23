@@ -299,7 +299,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street name, Unit, City, State, Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-Mj-Bzs">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="university terrace drive" borderStyle="roundedRect" placeholder="Street name, Unit, City, State, Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-Mj-Bzs">
                                 <rect key="frame" x="25" y="371.5" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="L3Y-FO-a77"/>
@@ -308,7 +308,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Value in meters to monitor" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKh-xR-sI3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2000" borderStyle="roundedRect" placeholder="Value in meters to monitor" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKh-xR-sI3">
                                 <rect key="frame" x="25" y="458" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Dp6-wY-nEr"/>
@@ -383,7 +383,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84Y-uV-j0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iOl-wM-KEO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-4497.1014492753629" y="-2377.2321428571427"/>
+            <point key="canvasLocation" x="-4254" y="-2499"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -393,11 +393,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q8B-V7-ODI">
-                                <rect key="frame" x="0.0" y="77" width="414" height="740"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="Q8B-V7-ODI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="721"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XF-Me-XWj">
-                                <rect key="frame" x="5" y="809" width="404" height="52"/>
+                                <rect key="frame" x="0.0" y="809" width="414" height="52"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.54927617311477661" green="0.77534586191177368" blue="0.24168312549591064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -408,7 +408,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Is-HU-cku">
-                                <rect key="frame" x="0.0" y="33" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Amissa" id="JXU-Id-LFP">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Lhw-if-sY6">
@@ -427,7 +428,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKQ-Me-mBo">
-                                <rect key="frame" x="334" y="92" width="60" height="40"/>
+                                <rect key="frame" x="20" y="103" width="60" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="beR-yp-Ecx"/>
@@ -446,20 +447,20 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0XF-Me-XWj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="0Po-fr-pho"/>
+                            <constraint firstItem="0XF-Me-XWj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Po-fr-pho"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q8B-V7-ODI" secondAttribute="trailing" id="3dW-kH-xqa"/>
-                            <constraint firstItem="5Is-HU-cku" firstAttribute="trailing" secondItem="Q8B-V7-ODI" secondAttribute="trailing" id="CFk-rN-PMl"/>
-                            <constraint firstItem="Q8B-V7-ODI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="77" id="DC6-Gi-xKb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0XF-Me-XWj" secondAttribute="trailing" constant="5" id="Sjr-hm-CMS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Q8B-V7-ODI" secondAttribute="bottom" constant="45" id="aVU-sq-0Dg"/>
-                            <constraint firstItem="5Is-HU-cku" firstAttribute="bottom" secondItem="Q8B-V7-ODI" secondAttribute="top" id="mca-GA-RWd"/>
+                            <constraint firstItem="qKQ-Me-mBo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LiO-3H-jvg"/>
+                            <constraint firstItem="Q8B-V7-ODI" firstAttribute="top" secondItem="5Is-HU-cku" secondAttribute="bottom" id="Lux-tY-ira"/>
+                            <constraint firstItem="5Is-HU-cku" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Lz9-OA-Hte"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0XF-Me-XWj" secondAttribute="trailing" id="Sjr-hm-CMS"/>
+                            <constraint firstItem="5Is-HU-cku" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z09-Bt-mzi"/>
+                            <constraint firstItem="0XF-Me-XWj" firstAttribute="top" secondItem="Q8B-V7-ODI" secondAttribute="bottom" id="eVU-za-b64"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0XF-Me-XWj" secondAttribute="bottom" constant="1" id="oE4-M5-d8m"/>
                             <constraint firstItem="Q8B-V7-ODI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pfe-12-IvE"/>
-                            <constraint firstItem="5Is-HU-cku" firstAttribute="leading" secondItem="Q8B-V7-ODI" secondAttribute="leading" id="wWX-4j-pAN"/>
                             <constraint firstItem="qKQ-Me-mBo" firstAttribute="top" secondItem="5Is-HU-cku" secondAttribute="bottom" constant="15" id="was-Sp-9rk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qKQ-Me-mBo" secondAttribute="trailing" constant="20" id="xQb-ZD-dA9"/>
+                            <constraint firstItem="5Is-HU-cku" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xa0-0W-2uo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -472,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3778.2608695652175" y="-2377.2321428571427"/>
+            <point key="canvasLocation" x="-3494.202898550725" y="-2499.1071428571427"/>
         </scene>
     </scenes>
     <resources>

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         case collapsed
     }
     
-    //var slidingSheetcontroller:SlidingSheetController!
+    var slidingSheetcontroller:SlidingSheetController!
     var visualEffectView: UIVisualEffectView!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -36,9 +36,9 @@ class ViewController: UIViewController {
     }
     
     var runningAnimations = [UIViewPropertyAnimator]()
-    var animationProgressWhenInterrupted = 0
+    var animationProgressWhenInterrupted:CGFloat = 0
     
-    let slidingSheetHeight:CGFloat = 600
+    let slidingSheetHeight:CGFloat = 400
     let slidingSheetHandleAreaHeight:CGFloat = 65
     
     let locationManager:CLLocationManager = CLLocationManager()
@@ -66,6 +66,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        setupSlidingSheet()
+        
         ref = Database.database().reference()
         
         ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").observe(.value, with: { (DataSnapshot) in
@@ -120,11 +122,8 @@ class ViewController: UIViewController {
         
         let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!)
         mapView.addOverlay(circle)
-        
-        //setupSlidingSheet()
-      
     }
-    /*
+    
     func setupSlidingSheet(){
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = self.view.frame
@@ -144,24 +143,73 @@ class ViewController: UIViewController {
         
         slidingSheetcontroller.handleArea.addGestureRecognizer(tapGestureRecognizer)
         slidingSheetcontroller.handleArea.addGestureRecognizer(panGestureRecognizer)
-    }*/
+    }
     
     @objc func handleSlidingSheetTap(recognizer: UITapGestureRecognizer){
         
     }
     
     @objc func handleSlidingSheetPan(recognizer: UIPanGestureRecognizer){
-        /*
+        
         switch recognizer.state {
         case .began:
             //startTransition
+            startInteractiveTransition(state: nextState, duration: 0.9)
         case .changed:
             //updateTransition
+            let translation = recognizer.translation(in: self.slidingSheetcontroller.handleArea)
+            var fractionComplete = translation.y / slidingSheetHeight
+            fractionComplete = slidingSheetVisible ? fractionComplete : -fractionComplete
+            updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
             //continueTransition
+            continueInteractiveTransition()
         default:
             break
-        }*/
+        }
+    }
+    
+    func animateTransitionIfNeeded(state:SlidingSheetState, duration:TimeInterval){
+        if runningAnimations.isEmpty{
+            let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+                switch state{
+                case .expanded:
+                    self.slidingSheetcontroller.view.frame.origin.y = self .view.frame.height - self.slidingSheetHeight
+                case .collapsed:
+                    self.slidingSheetcontroller.view.frame.origin.y = self.view.frame.height - self.slidingSheetHandleAreaHeight
+                }
+            }
+            frameAnimator.addCompletion { _ in
+                self.slidingSheetVisible = !self.slidingSheetVisible
+                self.runningAnimations.removeAll()
+            }
+            
+            frameAnimator.startAnimation()
+            runningAnimations.append(frameAnimator)
+        }
+    }
+    
+
+    func startInteractiveTransition(state:SlidingSheetState, duration:TimeInterval){
+        if runningAnimations.isEmpty{
+            animateTransitionIfNeeded(state: state, duration: duration)
+        }
+        for animator in runningAnimations{
+            animator.pauseAnimation()
+            animationProgressWhenInterrupted = animator.fractionComplete
+        }
+    }
+    
+    func updateInteractiveTransition(fractionCompleted:CGFloat){
+        for animator in runningAnimations{
+            animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
+        }
+    }
+    
+    func continueInteractiveTransition(){
+        for animator in runningAnimations{
+            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+        }
     }
     
     @IBAction func onClickLogoutButton(_ sender: Any) {

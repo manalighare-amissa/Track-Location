@@ -22,15 +22,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fB-Pf-9Ad">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                    <color key="backgroundColor" red="0.54927617311477661" green="0.77534586191177368" blue="0.24168312549591064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bsX-dn-EZn">
+                            <rect key="frame" x="184.5" y="6" width="45" height="5"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="hHm-aZ-LWS"/>
+                                <constraint firstAttribute="width" constant="45" id="yvp-f4-2mc">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="rOe-fF-W4y"/>
+                        <constraint firstItem="bsX-dn-EZn" firstAttribute="top" secondItem="5fB-Pf-9Ad" secondAttribute="top" constant="6" id="9O9-hz-8hh"/>
+                        <constraint firstItem="bsX-dn-EZn" firstAttribute="centerX" secondItem="5fB-Pf-9Ad" secondAttribute="centerX" id="ieS-ZX-PTp"/>
+                        <constraint firstAttribute="height" constant="65" id="rOe-fF-W4y"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aem-M8-6lW">
-                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="109" width="414" height="753"/>
+                    <color key="backgroundColor" red="0.95036774873733521" green="0.98296570777893066" blue="0.97389715909957886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +65,7 @@
                 <constraint firstItem="5fB-Pf-9Ad" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="l91-Tq-tmv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-500" y="125"/>
+            <point key="canvasLocation" x="-500.00000000000006" y="124.55357142857142"/>
         </view>
     </objects>
 </document>

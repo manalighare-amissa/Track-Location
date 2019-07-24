@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="KUf-CV-VLb">
-                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="5JF-8d-UfS"/>
                                 </constraints>
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-hg-s11">
-                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="CRg-bg-jgZ"/>
                                 </constraints>
@@ -324,7 +324,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="rbe-Su-Dk3">
-                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="pyq-3Z-Y7d"/>
                                 </constraints>

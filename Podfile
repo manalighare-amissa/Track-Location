@@ -12,6 +12,7 @@ target 'AmissaCare' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
+  pod 'FloatingPanel'
 
   target 'AmissaCareTests' do
     inherit! :search_paths

@@ -14,33 +14,17 @@ import CoreLocation
 import UserNotifications
 import Firebase
 import FirebaseDatabase
+import FloatingPanel
 
-class ViewController: UIViewController {
-    
-    enum SlidingSheetState{
-        case expanded
-        case collapsed
-    }
-    
-    var slidingSheetcontroller:SlidingSheetController!
-    var visualEffectView: UIVisualEffectView!
+class ViewController: UIViewController,FloatingPanelControllerDelegate{
+   
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var heartRateButton: UIButton!
-    
-    var slidingSheetVisible = false
-    var nextState:SlidingSheetState{
-        return slidingSheetVisible ? .collapsed : .expanded
-    }
-    
-    var runningAnimations = [UIViewPropertyAnimator]()
-    var animationProgressWhenInterrupted:CGFloat = 0
-    
-    let slidingSheetHeight:CGFloat = 400
-    let slidingSheetHandleAreaHeight:CGFloat = 65
-    
+   
+    var fpc: FloatingPanelController!
     let locationManager:CLLocationManager = CLLocationManager()
     //let regionInMeters: Double = 6000
     
@@ -66,7 +50,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
-        setupSlidingSheet()
+        
+        // Initialize a `FloatingPanelController` object.
+        fpc = FloatingPanelController()
+        
+        // Assign self as the delegate of the controller.
+        fpc.delegate = self
+        
+        
+        // Initialize FloatingPanelController and add the view
+        //fpc.surfaceView.backgroundColor = .clear
+        fpc.surfaceView.cornerRadius = 9.0
+        fpc.surfaceView.shadowHidden = false
+
+        
+        // Set a content view controller.
+        let contentVC = storyboard?.instantiateViewController(withIdentifier: "PatientDetailViewController") as? PatientDetailViewController
+        fpc.set(contentViewController: contentVC)
+        
+        // Track a scroll view(or the siblings) in the content view controller.
+        fpc.track(scrollView: contentVC?.scrollView)
+        
+        // Add and show the views managed by the `FloatingPanelController` object to self.view.
+        fpc.addPanel(toParent: self)
+        
+        fpc.isRemovalInteractionEnabled = true
+        
         
         ref = Database.database().reference()
         
@@ -124,93 +133,31 @@ class ViewController: UIViewController {
         mapView.addOverlay(circle)
     }
     
-    func setupSlidingSheet(){
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = self.view.frame
-        self.view.addSubview(visualEffectView)
-        
-        slidingSheetcontroller = SlidingSheetController(nibName: "SlidingSheetController", bundle: nil)
-        self.addChild(slidingSheetcontroller)
-        self.view.addSubview(slidingSheetcontroller.view)
-        
-        slidingSheetcontroller.view.frame = CGRect(x: 0, y: self.view.frame.height - slidingSheetHandleAreaHeight, width: self.view.bounds.width, height: slidingSheetHeight)
-        
-        slidingSheetcontroller.view.clipsToBounds = true
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSlidingSheetTap(recognizer:)))
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleSlidingSheetPan(recognizer:)))
-        
-        slidingSheetcontroller.handleArea.addGestureRecognizer(tapGestureRecognizer)
-        slidingSheetcontroller.handleArea.addGestureRecognizer(panGestureRecognizer)
+    
+    // MARK: FloatingPanelControllerDelegate
+    
+    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+        return MyFloatingPanelLayout()
     }
     
-    @objc func handleSlidingSheetTap(recognizer: UITapGestureRecognizer){
-        
+    func floatingPanelDidMove(_ vc: FloatingPanelController) {
+      
     }
     
-    @objc func handleSlidingSheetPan(recognizer: UIPanGestureRecognizer){
-        
-        switch recognizer.state {
-        case .began:
-            //startTransition
-            startInteractiveTransition(state: nextState, duration: 0.9)
-        case .changed:
-            //updateTransition
-            let translation = recognizer.translation(in: self.slidingSheetcontroller.handleArea)
-            var fractionComplete = translation.y / slidingSheetHeight
-            fractionComplete = slidingSheetVisible ? fractionComplete : -fractionComplete
-            updateInteractiveTransition(fractionCompleted: fractionComplete)
-        case .ended:
-            //continueTransition
-            continueInteractiveTransition()
-        default:
-            break
+    func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
+        if vc.position == .full {
+           
         }
     }
     
-    func animateTransitionIfNeeded(state:SlidingSheetState, duration:TimeInterval){
-        if runningAnimations.isEmpty{
-            let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-                switch state{
-                case .expanded:
-                    self.slidingSheetcontroller.view.frame.origin.y = self .view.frame.height - self.slidingSheetHeight
-                case .collapsed:
-                    self.slidingSheetcontroller.view.frame.origin.y = self.view.frame.height - self.slidingSheetHandleAreaHeight
-                }
-            }
-            frameAnimator.addCompletion { _ in
-                self.slidingSheetVisible = !self.slidingSheetVisible
-                self.runningAnimations.removeAll()
-            }
-            
-            frameAnimator.startAnimation()
-            runningAnimations.append(frameAnimator)
+    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
+        if targetPosition != .full {
+           // searchVC.hideHeader()
         }
+        
     }
     
 
-    func startInteractiveTransition(state:SlidingSheetState, duration:TimeInterval){
-        if runningAnimations.isEmpty{
-            animateTransitionIfNeeded(state: state, duration: duration)
-        }
-        for animator in runningAnimations{
-            animator.pauseAnimation()
-            animationProgressWhenInterrupted = animator.fractionComplete
-        }
-    }
-    
-    func updateInteractiveTransition(fractionCompleted:CGFloat){
-        for animator in runningAnimations{
-            animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-        }
-    }
-    
-    func continueInteractiveTransition(){
-        for animator in runningAnimations{
-            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        }
-    }
     
     @IBAction func onClickLogoutButton(_ sender: Any) {
         do {
@@ -379,6 +326,24 @@ extension ViewController: CLLocationManagerDelegate {
         print("Exited region")
     }
 }
+
+class MyFloatingPanelLayout: FloatingPanelLayout {
+    public var initialPosition: FloatingPanelPosition {
+        return .tip
+    }
+    
+    public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
+        switch position {
+        case .full: return 50.0 // A top inset from safe area
+        case .half: return 216.0 // A bottom inset from the safe area
+        case .tip: return 60.0 // A bottom inset from the safe area
+        default: return nil // Or `case .hidden: return nil`
+        }
+    }
+}
+
+
+
 
 
 

@@ -475,6 +475,59 @@
             </objects>
             <point key="canvasLocation" x="-3494.202898550725" y="-2499.1071428571427"/>
         </scene>
+        <!--Patient Detail View Controller-->
+        <scene sceneID="oSp-4q-Sra">
+            <objects>
+                <viewController storyboardIdentifier="PatientDetailViewController" id="wQX-5e-NR7" customClass="PatientDetailViewController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X1I-nW-yRp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzs-k7-j4V">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdn-5Z-kp0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABCD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwd-kR-AFi">
+                                                <rect key="frame" x="186" y="31" width="54" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Gdn-5Z-kp0" firstAttribute="top" secondItem="uzs-k7-j4V" secondAttribute="top" id="5Fl-Ti-tBu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gdn-5Z-kp0" secondAttribute="trailing" id="AUV-Be-dH1"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gdn-5Z-kp0" secondAttribute="bottom" constant="690" id="lrN-2l-Xpz"/>
+                                    <constraint firstItem="Gdn-5Z-kp0" firstAttribute="leading" secondItem="uzs-k7-j4V" secondAttribute="leading" id="yQT-9e-jId"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uzs-k7-j4V" firstAttribute="leading" secondItem="pat-Fh-5FK" secondAttribute="leading" id="4GJ-nC-IsD"/>
+                            <constraint firstItem="pat-Fh-5FK" firstAttribute="bottom" secondItem="uzs-k7-j4V" secondAttribute="bottom" id="69J-s8-haj"/>
+                            <constraint firstItem="Gdn-5Z-kp0" firstAttribute="height" secondItem="pat-Fh-5FK" secondAttribute="height" priority="250" id="PU1-uM-yyw"/>
+                            <constraint firstItem="Gdn-5Z-kp0" firstAttribute="width" secondItem="pat-Fh-5FK" secondAttribute="width" id="Tbl-Tm-E1y"/>
+                            <constraint firstItem="uzs-k7-j4V" firstAttribute="top" secondItem="pat-Fh-5FK" secondAttribute="top" id="fay-UY-nut"/>
+                            <constraint firstItem="pat-Fh-5FK" firstAttribute="trailing" secondItem="uzs-k7-j4V" secondAttribute="trailing" id="vcb-fo-LAh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pat-Fh-5FK"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="uzs-k7-j4V" id="XEH-QB-yQ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-dW-FdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2746.376811594203" y="-2608.2589285714284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AmissaLogoWithText" width="2999" height="2995"/>

@@ -12,8 +12,7 @@
 		133931B722C94D20008C4762 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133931B622C94D20008C4762 /* LocationController.swift */; };
 		1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5ED22D514D0008EB058 /* SignInController.swift */; };
 		1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5EF22D5189A008EB058 /* SignUpController.swift */; };
-		1396A95D22E78985006DB40D /* SlidingSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A95B22E78985006DB40D /* SlidingSheetController.swift */; };
-		1396A95E22E78985006DB40D /* SlidingSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1396A95C22E78985006DB40D /* SlidingSheetController.xib */; };
+		1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */; };
 		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
 		13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623822C126AD00D5F6D2 /* ViewController.swift */; };
 		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
@@ -50,8 +49,7 @@
 		133931B622C94D20008C4762 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		1370A5ED22D514D0008EB058 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		1370A5EF22D5189A008EB058 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
-		1396A95B22E78985006DB40D /* SlidingSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingSheetController.swift; sourceTree = "<group>"; };
-		1396A95C22E78985006DB40D /* SlidingSheetController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlidingSheetController.xib; sourceTree = "<group>"; };
+		1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
 		139FE30422D7C39D007823B8 /* AmissaCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AmissaCare.entitlements; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +122,7 @@
 				1370A5ED22D514D0008EB058 /* SignInController.swift */,
 				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
 				133931B622C94D20008C4762 /* LocationController.swift */,
-				1396A95B22E78985006DB40D /* SlidingSheetController.swift */,
+				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -159,7 +157,6 @@
 				1396A95F22E78A00006DB40D /* View Controllers */,
 				13E7623622C126AD00D5F6D2 /* AppDelegate.swift */,
 				13E7623A22C126AD00D5F6D2 /* Main.storyboard */,
-				1396A95C22E78985006DB40D /* SlidingSheetController.xib */,
 				13E7623D22C126AE00D5F6D2 /* Assets.xcassets */,
 				13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */,
 				13E7624222C126AE00D5F6D2 /* Info.plist */,
@@ -321,7 +318,6 @@
 				13E7624122C126AE00D5F6D2 /* LaunchScreen.storyboard in Resources */,
 				13ECE75A22D3D12100A2A88C /* GoogleService-Info.plist in Resources */,
 				13E7623E22C126AE00D5F6D2 /* Assets.xcassets in Resources */,
-				1396A95E22E78985006DB40D /* SlidingSheetController.xib in Resources */,
 				13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,10 +431,10 @@
 			files = (
 				1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */,
 				13E7623922C126AD00D5F6D2 /* ViewController.swift in Sources */,
-				1396A95D22E78985006DB40D /* SlidingSheetController.swift in Sources */,
 				1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */,
 				133931B722C94D20008C4762 /* LocationController.swift in Sources */,
 				13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */,
+				1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

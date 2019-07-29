@@ -17,22 +17,25 @@ import FirebaseDatabase
 import FloatingPanel
 
 class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
-   
     
+    
+    // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var heartRateButton: UIButton!
     
+    // Selected Patient Data
     var patientID: String?
     var PatientName: String?
-   
-    var fpc: FloatingPanelController!
-    let locationManager:CLLocationManager = CLLocationManager()
-    //let regionInMeters: Double = 6000
     
+    // Notification Configuration
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
+    
+    
+    //MARK: Location Manager and Map Configuration
+    let locationManager:CLLocationManager = CLLocationManager()
     
     let annotation = MKPointAnnotation()
     var circleRenderer: MKCircleRenderer?
@@ -45,15 +48,20 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
     var plong: Double?
     var distance: Double?
     
+    // Firebase Reference
+    var ref: DatabaseReference!
     var heartrate: UInt16?
     
-    var ref: DatabaseReference!
-    
+    // Floating Panel Controller
+    var fpc: FloatingPanelController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "\(PatientName)"
+        
         checkLocationServices()
         
+        //MARK: Floating Panel Configuration
         // Initialize a `FloatingPanelController` object.
         fpc = FloatingPanelController()
         
@@ -62,10 +70,9 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
         
         
         // Initialize FloatingPanelController and add the view
-        //fpc.surfaceView.backgroundColor = .clear
         fpc.surfaceView.cornerRadius = 9.0
         fpc.surfaceView.shadowHidden = false
-
+        
         
         // Set a content view controller.
         let contentVC = storyboard?.instantiateViewController(withIdentifier: "PatientDetailViewController") as? PatientDetailViewController
@@ -79,10 +86,10 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
         
         fpc.isRemovalInteractionEnabled = true
         
-        
+        // MARK: Firebase Listeners
         ref = Database.database().reference()
         
-        ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").observe(.value, with: { (DataSnapshot) in
+        ref?.child("\(patientID)").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
             
             self.heartrate = snapshot!["heartRate"] as? UInt16
@@ -91,27 +98,28 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
             
         })
         
-        ref?.child("3GKHgjSgp2bzmgX9SOP1Ee9sJ283").child("location").observe(.value, with:{ (DataSnapshot) in
+        ref?.child("\(patientID)").child("location").observe(.value, with:{ (DataSnapshot) in
             
-                let snapshot = DataSnapshot.value as? NSDictionary
+            let snapshot = DataSnapshot.value as? NSDictionary
             
-                self.plat = snapshot!["lat"] as? Double
-                self.plong = snapshot!["long"] as? Double
+            self.plat = snapshot!["lat"] as? Double
+            self.plong = snapshot!["long"] as? Double
             
             // print("lat is: \(self.plat)")
-
+            
             //print("lat = \(String(describing: self.lat)), Long = \(String(describing: self.long))")
             
-                self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
-                self.mapView.addAnnotation(self.annotation)
-                self.annotation.title = "Patient's Location"
+            self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
+            self.mapView.addAnnotation(self.annotation)
+            self.annotation.title = "Patient's Location"
             
-                let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
-                let geoCoder = CLGeocoder()
+            self.checkWithinGeofenceRegion()
             
-                self.checkWithinGeofenceRegion()
+            // MARK: Reverse geocoding for patient location
             
-        
+            let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
+            let geoCoder = CLGeocoder()
+            
             geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
                 let placeMarks = data as! [CLPlacemark]
                 let loc: CLPlacemark = placeMarks[0]
@@ -127,11 +135,15 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
             })
         })
         
+        
+        // Request location authorization
         locationManager.requestAlwaysAuthorization()
         
+        // Geofence Region
         let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!, identifier: "Monitored Region")
         locationManager.startMonitoring(for: geoFenceRegion)
         
+        // Circle overlay for geofence region
         let circle = MKCircle(center: CLLocationCoordinate2DMake(latitude!,longitude!), radius: geofenceRadius!)
         mapView.addOverlay(circle)
     }
@@ -144,23 +156,23 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
     }
     
     func floatingPanelDidMove(_ vc: FloatingPanelController) {
-      
+        
     }
     
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
         if vc.position == .full {
-           
+            
         }
     }
     
     func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
         if targetPosition != .full {
-           // searchVC.hideHeader()
+            // searchVC.hideHeader()
         }
         
     }
-
-
+    
+    
     
     @IBAction func onClickLogoutButton(_ sender: Any) {
         do {
@@ -211,24 +223,24 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
             print("inside")
             
             /*content.title = "Patient Location Update"
-            content.body = "Patient is inside the monitored region"
-            content.sound = UNNotificationSound.default
+             content.body = "Patient is inside the monitored region"
+             content.sound = UNNotificationSound.default
+             
+             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+             let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
             
-        
         }else{
             
             print("outside")
-           
+            
             let parameteres = ["to":"cNonS6WBsgU:APA91bFVubkcV-CWubBYbOv7dspn0jfGh_6u2qnXlUuxv-zXvXhJJLFsceobLAmE7gbbboisBpoSH-nJSPMN8ec2N6-ll49G8mgFzuU0YNo1Rlca30EBJ7gappKRqaDmGwKXFm4Vo119"
                 , "notification":
                     ["title": "Check this Mobile (title)",
-                    "body": "Rich Notification testing (body)",
-                    "mutable_content": true,
-                    "sound": "Tri-tone"]
+                     "body": "Rich Notification testing (body)",
+                     "mutable_content": true,
+                     "sound": "Tri-tone"]
                 ,"data": [
                     "url": "www.google.com",
                     "dl": "www.google.com"
@@ -262,7 +274,7 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
                 
                 if let httpResponse = response as? HTTPURLResponse{
                     
-                  
+                    
                     if httpResponse.statusCode == 200{
                         
                         if let data = data{
@@ -283,16 +295,19 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
             
             
             /*content.title = "Patient Location Update"
-            content.body = "Patient is outside of the monitored region"
-            content.sound = UNNotificationSound.default
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
+             content.body = "Patient is outside of the monitored region"
+             content.sound = UNNotificationSound.default
+             
+             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+             let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
         }
+        
+        
+        
     }
     
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -319,7 +334,7 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
         let centerLocation = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
         
         let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: geofenceRadius! + centerDistance + 2000, longitudinalMeters: geofenceRadius! + centerDistance + 2000)
-            mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
     }
     
     

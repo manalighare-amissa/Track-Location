@@ -45,7 +45,7 @@ class LocationController: UIViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGeofencing"{
-            let destination = segue.destination as! ViewController
+            let destination = segue.destination as! PatientInfoController
             destination.latitude = locationLatitude
             destination.longitude = locationLongitude
             destination.geofenceRadius = Double(radius.text!)

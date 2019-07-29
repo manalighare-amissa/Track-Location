@@ -146,12 +146,12 @@
                         <outlet property="loginButton" destination="rhG-CR-Si4" id="WKe-Zl-piQ"/>
                         <outlet property="passwordLabel" destination="Xsa-8m-5iR" id="yLt-A8-FpO"/>
                         <segue destination="781-N2-y6W" kind="show" identifier="goToSignUpSegue" id="MI0-aI-xin"/>
-                        <segue destination="86e-Ea-rCT" kind="show" identifier="loginToHomeSegue" id="MtC-eK-Cj6"/>
+                        <segue destination="Kt3-qT-xov" kind="show" identifier="LoginToPatientListSegue" id="51f-dZ-HUt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA9-7K-c3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5983" y="-2363"/>
+            <point key="canvasLocation" x="-6696" y="-2977"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="Owy-RE-oBa">
@@ -278,12 +278,66 @@
                         <outlet property="emailLabel" destination="zhy-OL-Szt" id="ddi-p7-oth"/>
                         <outlet property="nameLabel" destination="Spo-FS-yca" id="QZ2-EK-tHK"/>
                         <outlet property="passwordLabel" destination="WmY-os-5IX" id="gq2-cR-WFW"/>
-                        <segue destination="86e-Ea-rCT" kind="show" identifier="signUpToHomeSegue" id="K4R-W8-kIf"/>
+                        <segue destination="Kt3-qT-xov" kind="show" identifier="signUpToPatientListSegue" id="aV7-ia-gem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kta-Fm-urG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5186" y="-2369"/>
+            <point key="canvasLocation" x="-6697" y="-2250"/>
+        </scene>
+        <!--Patient List Controller-->
+        <scene sceneID="aPk-rh-zD1">
+            <objects>
+                <viewController id="Kt3-qT-xov" customClass="PatientListController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MvS-q5-0iG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E8f-jB-U3D">
+                                <rect key="frame" x="0.0" y="44" width="414" height="766"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Qip-Uv-sMR">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qip-Uv-sMR" id="rMP-hB-kJk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Kt3-qT-xov" id="JxL-g1-ZfF"/>
+                                    <outlet property="delegate" destination="Kt3-qT-xov" id="E4e-2G-a1P"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQt-d7-Yg2">
+                                <rect key="frame" x="196" y="820" width="22" height="22"/>
+                                <connections>
+                                    <segue destination="fTT-vX-RU4" kind="show" id="VVM-FF-wqE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eSP-xd-Cuq" firstAttribute="trailing" secondItem="E8f-jB-U3D" secondAttribute="trailing" id="79Q-Fv-KUY"/>
+                            <constraint firstItem="E8f-jB-U3D" firstAttribute="top" secondItem="eSP-xd-Cuq" secondAttribute="top" id="Hc2-ts-CDY"/>
+                            <constraint firstItem="eSP-xd-Cuq" firstAttribute="bottom" secondItem="gQt-d7-Yg2" secondAttribute="bottom" constant="20" id="UEa-e2-u8f"/>
+                            <constraint firstItem="E8f-jB-U3D" firstAttribute="leading" secondItem="eSP-xd-Cuq" secondAttribute="leading" id="l4I-hf-GM3"/>
+                            <constraint firstItem="gQt-d7-Yg2" firstAttribute="top" secondItem="E8f-jB-U3D" secondAttribute="bottom" constant="10" id="lFA-Q7-wKI"/>
+                            <constraint firstItem="gQt-d7-Yg2" firstAttribute="centerX" secondItem="MvS-q5-0iG" secondAttribute="centerX" id="sEi-88-wIt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eSP-xd-Cuq"/>
+                    </view>
+                    <connections>
+                        <outlet property="addPatientButton" destination="gQt-d7-Yg2" id="OcR-l6-4tK"/>
+                        <outlet property="patientListTableView" destination="E8f-jB-U3D" id="hXt-yH-ojp"/>
+                        <segue destination="rE0-iC-mce" kind="show" identifier="PatientListToMapViewSegue" id="uDt-Qe-m95"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfy-Ug-Use" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5648" y="-2977"/>
         </scene>
         <!--Location Controller-->
         <scene sceneID="Lgp-C4-ZCo">
@@ -383,12 +437,122 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84Y-uV-j0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iOl-wM-KEO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-4254" y="-2499"/>
+            <point key="canvasLocation" x="-4567" y="-2977"/>
         </scene>
-        <!--View Controller-->
+        <!--Patient Location And Info Controller-->
+        <scene sceneID="9ee-lF-jes">
+            <objects>
+                <viewController id="rE0-iC-mce" customClass="PatientLocationAndInfoController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UTe-ch-MHz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="j5k-SL-b1u">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-L3-zGJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Amissa" id="CTV-DN-vLR">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ztQ-HH-dYg">
+                                            <color key="tintColor" red="0.54927617309999999" green="0.77534586189999999" blue="0.24168312550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <segue destination="Kt3-qT-xov" kind="show" id="5NG-Bz-aKs"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="0jQ-Ha-QrD">
+                                            <color key="tintColor" red="0.54927617309999999" green="0.77534586189999999" blue="0.24168312550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="onClickLogoutButton:" destination="BYZ-38-t0r" id="Nim-ad-nlZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-x0-ghb">
+                                <rect key="frame" x="20" y="104" width="60" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="HyM-Ho-HZJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="giG-Bb-pOW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="heartIcon">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j5k-SL-b1u" firstAttribute="top" secondItem="tbh-L3-zGJ" secondAttribute="bottom" id="2Fu-xk-7Fr"/>
+                            <constraint firstItem="Omw-x0-ghb" firstAttribute="top" secondItem="tbh-L3-zGJ" secondAttribute="bottom" constant="16" id="4G1-Me-ric"/>
+                            <constraint firstItem="tbh-L3-zGJ" firstAttribute="trailing" secondItem="CaE-Kh-aBC" secondAttribute="trailing" id="5xL-5O-Kxr"/>
+                            <constraint firstItem="tbh-L3-zGJ" firstAttribute="top" secondItem="CaE-Kh-aBC" secondAttribute="top" id="JQ9-1M-mw0"/>
+                            <constraint firstItem="j5k-SL-b1u" firstAttribute="trailing" secondItem="CaE-Kh-aBC" secondAttribute="trailing" id="OQu-Qt-FbQ"/>
+                            <constraint firstItem="CaE-Kh-aBC" firstAttribute="bottom" secondItem="j5k-SL-b1u" secondAttribute="bottom" id="W41-xk-tf5"/>
+                            <constraint firstItem="tbh-L3-zGJ" firstAttribute="leading" secondItem="CaE-Kh-aBC" secondAttribute="leading" id="XRR-7l-Viu"/>
+                            <constraint firstItem="j5k-SL-b1u" firstAttribute="top" secondItem="tbh-L3-zGJ" secondAttribute="bottom" id="kHd-Bv-yHK"/>
+                            <constraint firstItem="j5k-SL-b1u" firstAttribute="leading" secondItem="CaE-Kh-aBC" secondAttribute="leading" id="r5Z-zq-Lh8"/>
+                            <constraint firstItem="Omw-x0-ghb" firstAttribute="leading" secondItem="CaE-Kh-aBC" secondAttribute="leading" constant="20" id="wXH-fm-hSs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CaE-Kh-aBC"/>
+                    </view>
+                    <connections>
+                        <outlet property="NavigationBar" destination="tbh-L3-zGJ" id="fkt-SE-R4Q"/>
+                        <outlet property="heartRateButton" destination="Omw-x0-ghb" id="EMl-EA-GWu"/>
+                        <outlet property="logoutButton" destination="0jQ-Ha-QrD" id="xzl-fe-UYz"/>
+                        <outlet property="mapView" destination="j5k-SL-b1u" id="d4k-cV-jJh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnh-hZ-M4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4568" y="-2265"/>
+        </scene>
+        <!--Barcode Scanner Controller-->
+        <scene sceneID="wOU-1H-baq">
+            <objects>
+                <viewController id="fTT-vX-RU4" customClass="BarcodeScannerController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YuP-Oa-eGw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="oJ6-45-0BG">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="9zW-LF-fiR"/>
+                                    <constraint firstAttribute="width" constant="250" id="oTy-Xj-sfY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oJ6-45-0BG" firstAttribute="centerX" secondItem="YuP-Oa-eGw" secondAttribute="centerX" id="JWc-fL-VDn"/>
+                            <constraint firstItem="oJ6-45-0BG" firstAttribute="centerY" secondItem="YuP-Oa-eGw" secondAttribute="centerY" id="scZ-fx-Fuk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6m6-J6-vhT"/>
+                    </view>
+                    <connections>
+                        <outlet property="barcodeScanSquare" destination="oJ6-45-0BG" id="w38-mr-j37"/>
+                        <outlet property="superView" destination="YuP-Oa-eGw" id="khq-Mo-GdM"/>
+                        <segue destination="Kt3-qT-xov" kind="show" identifier="BackToPatientListSegue" id="Y2Z-Pe-Pde"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5w-gq-jBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5649" y="-2047"/>
+        </scene>
+        <!--Patient Info Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PatientInfoController" customModule="AmissaCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -473,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3494.202898550725" y="-2499.1071428571427"/>
+            <point key="canvasLocation" x="-3555" y="-2977"/>
         </scene>
         <!--Patient Detail View Controller-->
         <scene sceneID="oSp-4q-Sra">
@@ -526,7 +690,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-dW-FdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2746.376811594203" y="-2608.2589285714284"/>
+            <point key="canvasLocation" x="-2658" y="-2977"/>
         </scene>
     </scenes>
     <resources>
@@ -534,8 +698,10 @@
         <image name="facebookLogo" width="128" height="128"/>
         <image name="googleLogo" width="128" height="128"/>
         <image name="heartIcon" width="18" height="18"/>
+        <image name="square" width="276" height="276"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mGC-TJ-X7M"/>
+        <segue reference="5NG-Bz-aKs"/>
     </inferredMetricsTieBreakers>
 </document>

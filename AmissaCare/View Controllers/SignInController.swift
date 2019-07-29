@@ -22,7 +22,7 @@ class SignInController: UIViewController {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
             
-            self.performSegue(withIdentifier: "loginToHomeSegue", sender: nil)
+            self.performSegue(withIdentifier: "LoginToPatientListSegue", sender: nil)
         }
     }
 
@@ -47,7 +47,7 @@ class SignInController: UIViewController {
         Auth.auth().signIn(withEmail: emailLabel.text!, password: passwordLabel.text!) { (user, error) in
             if error == nil{
                 print (" no error")
-                self.performSegue(withIdentifier: "loginToHomeSegue", sender: self)
+                self.performSegue(withIdentifier: "LoginToPatientListSegue", sender: self)
             }
             else{
                 print ("error")

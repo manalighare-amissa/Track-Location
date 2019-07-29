@@ -48,7 +48,7 @@ class SignUpController: UIViewController {
         else{
             Auth.auth().createUser(withEmail: emailLabel.text!, password: passwordLabel.text!){ (user, error) in
                 if error == nil {
-                    self.performSegue(withIdentifier: "signUpToHomeSegue", sender: self)
+                    self.performSegue(withIdentifier: "signUpToPatientListSegue", sender: self)
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

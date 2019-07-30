@@ -57,8 +57,6 @@ class PatientInfoController: UIViewController,FloatingPanelControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "\(PatientName)"
-        
         checkLocationServices()
         
         //MARK: Floating Panel Configuration
@@ -401,21 +399,6 @@ extension PatientInfoController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("Exited region")
-    }
-}
-
-class MyFloatingPanelLayout: FloatingPanelLayout {
-    public var initialPosition: FloatingPanelPosition {
-        return .tip
-    }
-    
-    public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
-        switch position {
-        case .full: return 50.0 // A top inset from safe area
-        case .half: return 216.0 // A bottom inset from the safe area
-        case .tip: return 60.0 // A bottom inset from the safe area
-        default: return nil // Or `case .hidden: return nil`
-        }
     }
 }
 

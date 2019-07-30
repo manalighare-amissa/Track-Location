@@ -127,11 +127,11 @@
 				1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */,
 				1396A9B722EF7A4C006DB40D /* PatientInfoController.swift */,
 				1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */,
+				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 				1370A5ED22D514D0008EB058 /* SignInController.swift */,
 				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
 				133931B622C94D20008C4762 /* LocationController.swift */,
 				1396A9B122EF40B9006DB40D /* PatientListController.swift */,
-				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

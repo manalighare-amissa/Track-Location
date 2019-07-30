@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="KUf-CV-VLb">
-                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="5JF-8d-UfS"/>
                                 </constraints>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA9-7K-c3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6696" y="-2977"/>
+            <point key="canvasLocation" x="-8196" y="-2963"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="Owy-RE-oBa">
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-hg-s11">
-                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="CRg-bg-jgZ"/>
                                 </constraints>
@@ -283,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kta-Fm-urG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6697" y="-2250"/>
+            <point key="canvasLocation" x="-8197" y="-2180"/>
         </scene>
         <!--Patient List Controller-->
         <scene sceneID="aPk-rh-zD1">
@@ -337,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfy-Ug-Use" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5648" y="-2977"/>
+            <point key="canvasLocation" x="-7061" y="-2963"/>
         </scene>
         <!--Location Controller-->
         <scene sceneID="Lgp-C4-ZCo">
@@ -378,7 +378,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AmissaLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="rbe-Su-Dk3">
-                                <rect key="frame" x="0.0" y="54" width="414.00000000000045" height="235"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="pyq-3Z-Y7d"/>
                                 </constraints>
@@ -437,7 +437,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84Y-uV-j0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iOl-wM-KEO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-4567" y="-2977"/>
+            <point key="canvasLocation" x="-4626" y="-2129"/>
         </scene>
         <!--Patient Location And Info Controller-->
         <scene sceneID="9ee-lF-jes">
@@ -448,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="j5k-SL-b1u">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-L3-zGJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -464,7 +464,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="0jQ-Ha-QrD">
                                             <color key="tintColor" red="0.54927617309999999" green="0.77534586189999999" blue="0.24168312550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="onClickLogoutButton:" destination="BYZ-38-t0r" id="Nim-ad-nlZ"/>
+                                                <action selector="onClickLogoutButton:" destination="rE0-iC-mce" id="Go0-dj-izX"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -497,7 +497,7 @@
                             <constraint firstItem="tbh-L3-zGJ" firstAttribute="trailing" secondItem="CaE-Kh-aBC" secondAttribute="trailing" id="5xL-5O-Kxr"/>
                             <constraint firstItem="tbh-L3-zGJ" firstAttribute="top" secondItem="CaE-Kh-aBC" secondAttribute="top" id="JQ9-1M-mw0"/>
                             <constraint firstItem="j5k-SL-b1u" firstAttribute="trailing" secondItem="CaE-Kh-aBC" secondAttribute="trailing" id="OQu-Qt-FbQ"/>
-                            <constraint firstItem="CaE-Kh-aBC" firstAttribute="bottom" secondItem="j5k-SL-b1u" secondAttribute="bottom" id="W41-xk-tf5"/>
+                            <constraint firstAttribute="bottom" secondItem="j5k-SL-b1u" secondAttribute="bottom" id="W41-xk-tf5"/>
                             <constraint firstItem="tbh-L3-zGJ" firstAttribute="leading" secondItem="CaE-Kh-aBC" secondAttribute="leading" id="XRR-7l-Viu"/>
                             <constraint firstItem="j5k-SL-b1u" firstAttribute="top" secondItem="tbh-L3-zGJ" secondAttribute="bottom" id="kHd-Bv-yHK"/>
                             <constraint firstItem="j5k-SL-b1u" firstAttribute="leading" secondItem="CaE-Kh-aBC" secondAttribute="leading" id="r5Z-zq-Lh8"/>
@@ -514,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnh-hZ-M4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4568" y="-2265"/>
+            <point key="canvasLocation" x="-5784" y="-2973"/>
         </scene>
         <!--Barcode Scanner Controller-->
         <scene sceneID="wOU-1H-baq">
@@ -547,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5w-gq-jBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5649" y="-2047"/>
+            <point key="canvasLocation" x="-7123" y="-2180"/>
         </scene>
         <!--Patient Info Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -637,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3555" y="-2977"/>
+            <point key="canvasLocation" x="-4661" y="-3027"/>
         </scene>
         <!--Patient Detail View Controller-->
         <scene sceneID="oSp-4q-Sra">
@@ -653,15 +653,83 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdn-5Z-kp0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABCD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwd-kR-AFi">
-                                                <rect key="frame" x="186" y="31" width="54" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABCD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwd-kR-AFi">
+                                                <rect key="frame" x="10" y="10" width="404" height="75"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="iHf-nZ-wfk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02a-ju-iAE">
+                                                <rect key="frame" x="317" y="20" width="87" height="40"/>
+                                                <color key="backgroundColor" red="0.44531041380000003" green="0.69359141589999995" blue="0.38818430900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="87" id="Jya-Je-wHq"/>
+                                                    <constraint firstAttribute="height" constant="40" id="v7f-2T-yRL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Monitor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addGeofenceButtonTapped:" destination="wQX-5e-NR7" eventType="touchUpInside" id="nSt-Af-fN0"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter radius in meters" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dev-gZ-TPo">
+                                                <rect key="frame" x="10" y="100" width="394" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="ez8-40-GS5"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                <connections>
+                                                    <action selector="enterRadiusTapped:" destination="wQX-5e-NR7" eventType="editingDidBegin" id="KFG-eg-ApY"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHg-Gu-MKT">
+                                                <rect key="frame" x="10" y="150" width="394" height="38"/>
+                                                <color key="backgroundColor" red="0.44531041380000003" green="0.69359141589999995" blue="0.38818430900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <accessibility key="accessibilityConfiguration" hint="Recieve Notification when user exits or enter a region"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="O3n-3G-733"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Start Monitoring">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="locationMonitor:" destination="86e-Ea-rCT" eventType="touchUpInside" id="e1k-Qw-eDw"/>
+                                                    <action selector="monitor:" destination="iOl-wM-KEO" eventType="touchUpInside" id="py4-ZC-u4W"/>
+                                                    <action selector="startMonitoringButtonTapped:" destination="wQX-5e-NR7" eventType="touchUpInside" id="n2U-gA-QMf"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="dev-gZ-TPo" secondAttribute="trailing" constant="10" id="9Ik-Hu-Z1a"/>
+                                            <constraint firstItem="dev-gZ-TPo" firstAttribute="top" secondItem="Hwd-kR-AFi" secondAttribute="bottom" constant="15" id="Hhf-ML-IKz"/>
+                                            <constraint firstAttribute="trailing" secondItem="zHg-Gu-MKT" secondAttribute="trailing" constant="10" id="LtB-Pe-KWf"/>
+                                            <constraint firstItem="zHg-Gu-MKT" firstAttribute="top" secondItem="dev-gZ-TPo" secondAttribute="bottom" constant="15" id="OMc-si-HHu"/>
+                                            <constraint firstItem="dev-gZ-TPo" firstAttribute="leading" secondItem="Gdn-5Z-kp0" secondAttribute="leading" constant="10" id="REz-0m-04U"/>
+                                            <constraint firstItem="zHg-Gu-MKT" firstAttribute="leading" secondItem="Gdn-5Z-kp0" secondAttribute="leading" constant="10" id="Rcj-1K-lhG"/>
+                                            <constraint firstItem="02a-ju-iAE" firstAttribute="top" secondItem="Gdn-5Z-kp0" secondAttribute="top" constant="20" id="ara-7s-gZA"/>
+                                            <constraint firstItem="Hwd-kR-AFi" firstAttribute="leading" secondItem="Gdn-5Z-kp0" secondAttribute="leading" constant="10" id="dpG-ae-hUV"/>
+                                            <constraint firstAttribute="trailing" secondItem="02a-ju-iAE" secondAttribute="trailing" constant="10" id="f4l-ez-AgY"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hwd-kR-AFi" secondAttribute="trailing" id="ijq-m5-GAa"/>
+                                            <constraint firstItem="Hwd-kR-AFi" firstAttribute="top" secondItem="Gdn-5Z-kp0" secondAttribute="top" constant="10" id="nuV-7d-XlZ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -685,12 +753,14 @@
                         <viewLayoutGuide key="safeArea" id="pat-Fh-5FK"/>
                     </view>
                     <connections>
+                        <outlet property="addressLabel1" destination="Hwd-kR-AFi" id="cEA-gU-pnY"/>
+                        <outlet property="radiusTextField" destination="dev-gZ-TPo" id="ttd-CA-al3"/>
                         <outlet property="scrollView" destination="uzs-k7-j4V" id="XEH-QB-yQ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-dW-FdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2658" y="-2977"/>
+            <point key="canvasLocation" x="-5784" y="-2180"/>
         </scene>
     </scenes>
     <resources>
@@ -701,7 +771,7 @@
         <image name="square" width="276" height="276"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mGC-TJ-X7M"/>
+        <segue reference="p81-5O-kBS"/>
         <segue reference="5NG-Bz-aKs"/>
     </inferredMetricsTieBreakers>
 </document>

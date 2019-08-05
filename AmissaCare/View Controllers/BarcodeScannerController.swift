@@ -73,6 +73,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     
                     alert.addTextField { (TextField) in
                         TextField.placeholder = "Enter name of the patient"
+                        TextField.autocapitalizationType = .sentences
                     }
                     
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert](_) in

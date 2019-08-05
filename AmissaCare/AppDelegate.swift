@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var registrationToken: String?
     
     
     let center = UNUserNotificationCenter.current()
@@ -43,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
+                self.registrationToken = result.token
             }
         }
         
@@ -67,18 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
-        
-        content.title = "Patient Location Update"
-        content.body = "Patient is outside of the monitored region"
-        content.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-        // Print full message.
-        print(userInfo)
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

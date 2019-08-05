@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		096D4180BD24003620C14191 /* Pods_AmissaCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */; };
 		131475AF22C53146008613D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131475AE22C53146008613D7 /* MapKit.framework */; };
-		133931B722C94D20008C4762 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133931B622C94D20008C4762 /* LocationController.swift */; };
 		1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5ED22D514D0008EB058 /* SignInController.swift */; };
 		1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5EF22D5189A008EB058 /* SignUpController.swift */; };
 		1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */; };
@@ -49,7 +48,6 @@
 		05DE546E6B87464E173BB6E1 /* Pods-AmissaCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCare.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCare/Pods-AmissaCare.debug.xcconfig"; sourceTree = "<group>"; };
 		131475AE22C53146008613D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		131475B022C55F86008613D7 /* EnteredRegion.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnteredRegion.gpx; sourceTree = "<group>"; };
-		133931B622C94D20008C4762 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		1370A5ED22D514D0008EB058 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		1370A5EF22D5189A008EB058 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 				1370A5ED22D514D0008EB058 /* SignInController.swift */,
 				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
-				133931B622C94D20008C4762 /* LocationController.swift */,
 				1396A9B122EF40B9006DB40D /* PatientListController.swift */,
 			);
 			path = "View Controllers";
@@ -440,7 +437,6 @@
 			files = (
 				1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */,
 				1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */,
-				133931B722C94D20008C4762 /* LocationController.swift in Sources */,
 				1396A9B822EF7A4C006DB40D /* PatientInfoController.swift in Sources */,
 				1396A9BA22EF834A006DB40D /* PatientLocationAndInfoController.swift in Sources */,
 				13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */,

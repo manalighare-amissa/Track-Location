@@ -39,12 +39,14 @@ class PatientListController: UIViewController {
         patientRef?.child(userID).child("Patients").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
 
-    
+            if snapshot != nil{
             for key in snapshot!.allKeys{
                 self.patientNames.append("\(snapshot![key]!)")
                 self.patientData.append("\(key)")
                 self.patientListTableView.reloadData()
 
+            }
+            
             }
             
         })

@@ -24,7 +24,8 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
     @IBOutlet weak var heartRateButton: UIButton!
     @IBOutlet weak var batteryButton: UIButton!
     @IBOutlet weak var NavigationBar: UINavigationBar!
-    
+    @IBOutlet weak var geofenceNotificationLabel: UILabel!
+
     // Selected Patient Data
     var patientID: String?
     var PatientName: String?
@@ -33,6 +34,7 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
     var ref: DatabaseReference!
     var heartrate: UInt16?
     var batteryPercentage: UInt16?
+    
     
     //MARK: Location Manager and Map Configuration
     let locationManager:CLLocationManager = CLLocationManager()
@@ -51,6 +53,7 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
     lazy var geocoder = CLGeocoder()
     var geofenceLatitude: Double?
     var geofenceLongitude: Double?
+    var geofenceRadius: Double?
     
     // Setup app delegate variable to retrieve registration Token
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -61,6 +64,8 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
         NavigationBar.topItem?.title = "\(PatientName!)"
         mapView.delegate = self as? MKMapViewDelegate
         
+        // Hide geofenceNotificationLabel
+        self.geofenceNotificationLabel.isHidden = true
         
         //Retrieve registration token from app delegate
         registrationToken = delegate.registrationToken
@@ -76,6 +81,7 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
         // Initialize FloatingPanelController and add the view
         fpc.surfaceView.cornerRadius = 9.0
         fpc.surfaceView.shadowHidden = false
+        fpc.surfaceView.backgroundColor = .clear
         
         
         // Set a content view controller.
@@ -97,7 +103,7 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
         // MARK: Firebase Listeners
         ref = Database.database().reference()
         
-        ref?.child("\(patientID!)").observe(.value, with: { (DataSnapshot) in
+        ref?.child("Patient").child("\(patientID!)").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
             
             self.heartrate = snapshot!["heartRate"] as? UInt16
@@ -111,41 +117,86 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
             
         })
         
-        ref?.child("\(patientID!)").child("location").observe(.value, with:{ (DataSnapshot) in
-            
-            let snapshot = DataSnapshot.value as? NSDictionary
-            
-            self.plat = snapshot!["lat"] as? Double
-            self.plong = snapshot!["long"] as? Double
-            
-            self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
-            self.mapView.addAnnotation(self.annotation)
-            self.annotation.title = "\(self.PatientName!)'s Location"
-            
-            // MARK: Reverse geocoding for patient location
-            
-            let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
-            let geoCoder = CLGeocoder()
-            
-            geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
-                let placeMarks = data as! [CLPlacemark]
-                let loc: CLPlacemark = placeMarks[0]
-                
-                self.mapView.centerCoordinate = center.coordinate
-                let city = loc.locality ?? ""
-                let Name = loc.name ?? ""
-                let postalCode = loc.postalCode ?? ""
-                
-                contentVC?.addressLabel1.text = " \(self.PatientName!)'s Location: \n \(Name)\n \(city), \(postalCode) "
-                //contentVC?.addressLabel2.text = "\(city),\(postalCode)"
-               // self.centerViewOnUserLocation()
-            })
-        })
+      
         
+//        let userID = Auth.auth().currentUser?.uid
+//
+//        ref?.child("Patient").child("\(patientID!)").child("Geofences").child("\(userID!)").observe(.value, with:{ (DataSnapshot) in
+//
+//            let snapshot = DataSnapshot.value as? NSDictionary
+//
+//            if snapshot != nil{
+//                let center = snapshot!["center"] as! NSDictionary
+//                self.geofenceLatitude = center["lat"] as! Double
+//                self.geofenceLongitude = center["long"] as! Double
+//
+//                let geofenceCenter = CLLocation(latitude: self.geofenceLatitude!, longitude: self.geofenceLongitude!)
+//                let geoCoder = CLGeocoder()
+//                geoCoder.reverseGeocodeLocation(geofenceCenter, completionHandler: {(data,error) -> Void in
+//                               let placeMarks = data as! [CLPlacemark]
+//                               let loc: CLPlacemark = placeMarks[0]
+//
+//                    self.mapView.centerCoordinate = geofenceCenter.coordinate
+//                               let city = loc.locality ?? ""
+//                               let Name = loc.name ?? ""
+//
+//
+//                               contentVC?.geofenceCenterTextField.text = "\(Name) \(city)"
+//                           })
+//
+//                contentVC?.radiusTextField.text = "\(snapshot!["radius"]!)"
+//
+//                // Remove old overlays if any
+//                let overlays = self.mapView.overlays
+//                self.mapView.removeOverlays(overlays)
+//
+//                // Show geofence region on the map
+//                let circle: MKOverlay = MKCircle(center: CLLocationCoordinate2DMake(self.geofenceLatitude!,self.geofenceLongitude!), radius: snapshot!["radius"] as! Double)
+//                self.mapView.addOverlay(circle)
+//
+//
+//
+//
+//            }
+//        })
+//
+        
+        ref?.child("Patient").child("\(patientID!)").child("location").observe(.value, with:{ (DataSnapshot) in
+                  
+                  let snapshot = DataSnapshot.value as? NSDictionary
+                  
+                  self.plat = snapshot!["lat"] as? Double
+                  self.plong = snapshot!["long"] as? Double
+              
+                  if self.geofenceRadius != nil && self.geofenceLatitude != nil && self.geofenceLongitude != nil{
+                       self.isPatientWithinGeofence()
+                  }
+                  self.mapView.removeAnnotations(self.mapView.annotations)
+                  self.annotation.coordinate = CLLocationCoordinate2D(latitude: self.plat!, longitude: self.plong!)
+                  self.mapView.addAnnotation(self.annotation)
+                  self.annotation.title = "\(self.PatientName!)'s Location"
+                  
+                  // MARK: Reverse geocoding for patient location
+                  
+                  let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
+                  let geoCoder = CLGeocoder()
+                  
+                  geoCoder.reverseGeocodeLocation(center, completionHandler: {(data,error) -> Void in
+                      let placeMarks = data as! [CLPlacemark]
+                      let loc: CLPlacemark = placeMarks[0]
+                      
+                      self.mapView.centerCoordinate = center.coordinate
+                      let city = loc.locality ?? ""
+                      let Name = loc.name ?? ""
+                      let postalCode = loc.postalCode ?? ""
+                      
+                      contentVC?.addressLabel1.text = " \(self.PatientName!)'s Location: \n \(Name)\n \(city), \(postalCode) "
+                  })
+              })
     }
     
-    // MARK: FloatingPanelControllerDelegate
     
+    // MARK: FloatingPanelControllerDelegate
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
         return MyFloatingPanelLayout()
     }
@@ -189,6 +240,24 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
         
         let hDistance = radius * ahaversin(haversin(lat2 - lat1) + cos(lat1) * cos(lat2) * haversin(lon2 - lon1))
         return hDistance
+    }
+    
+    func isPatientWithinGeofence(){
+        var distance = haversineDinstance(la1: self.plat!, lo1: self.plong!, la2: self.geofenceLatitude!, lo2: self.geofenceLongitude!)
+        
+        if distance > self.geofenceRadius!{
+            
+            self.geofenceNotificationLabel.isHidden = false
+            self.geofenceNotificationLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            self.geofenceNotificationLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            self.geofenceNotificationLabel.text = "patient is outside geofence"
+            self.geofenceNotificationLabel.flash()
+         }else{
+            self.geofenceNotificationLabel.isHidden = false
+            self.geofenceNotificationLabel.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            self.geofenceNotificationLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            self.geofenceNotificationLabel.text = "patient is inside geofence"
+        }
     }
     
     func centerViewOnUserLocation(_ radius: Double) {
@@ -248,6 +317,7 @@ extension PatientLocationAndInfoController: PatientDetailViewDelegate{
     func addedRegion(_ radius: Double, _ address: String) {
         
         print("Radius is : \(radius)")
+        self.geofenceRadius = radius
 
         fpc.move(to: .tip, animated: true)
         
@@ -277,11 +347,23 @@ extension PatientLocationAndInfoController: PatientDetailViewDelegate{
                 
                 //Add geofence to firebase
                 let userID = Auth.auth().currentUser?.uid
-                self.ref.child("\(self.patientID!)").child("Geofences").child("\(userID!)").child("center").child("lat").setValue(self.geofenceLatitude)
-                self.ref.child("\(self.patientID!)").child("Geofences").child("\(userID!)").child("center").child("long").setValue(self.geofenceLongitude)
-                self.ref.child("\(self.patientID!)").child("Geofences").child("\(userID!)").child("radius").setValue(radius)
-                self.ref.child("\(self.patientID!)").child("Geofences").child("\(userID!)").child("registrationToken").setValue(self.registrationToken!)
+               
                 
+                let jsonObject: [String: Any]  = [
+                         "center": [
+                            "lat": self.geofenceLatitude!,
+                            "long": self.geofenceLongitude!
+                        ],
+                         "radius": radius,
+                         "registrationToken": self.registrationToken!
+                ]
+                
+                self.ref.child("Patient").child("\(self.patientID!)").child("Geofences").child("\(userID!)").setValue(jsonObject)
+                
+                
+                if self.geofenceRadius != nil && self.geofenceLatitude != nil && self.geofenceLongitude != nil{
+                    self.isPatientWithinGeofence()
+                }
                         
              }
                  
@@ -296,6 +378,25 @@ extension PatientLocationAndInfoController: PatientDetailViewDelegate{
         fpc.move(to: .full, animated: true)
     }
 }
+
+extension UILabel{
+    
+    func flash(){
+        
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.5
+        flash.fromValue = 1
+        flash.toValue = 0.5
+        
+        flash.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = 3
+        
+        layer.add(flash, forKey: nil)
+    }
+    
+}
+
 
 class MyFloatingPanelLayout: FloatingPanelLayout {
     public var initialPosition: FloatingPanelPosition {

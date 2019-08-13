@@ -51,15 +51,6 @@ class PatientDetailViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
-    
-    /*
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        radiusTextField.resignFirstResponder()
-        patientDetailDelegate.addedRegion()
-        return true
-    }*/
-    
-    
 }
 
 extension UITextField{

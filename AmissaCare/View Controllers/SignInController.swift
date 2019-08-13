@@ -23,6 +23,8 @@ class SignInController: UIViewController {
         if Auth.auth().currentUser != nil {
             
             self.performSegue(withIdentifier: "LoginToPatientListSegue", sender: nil)
+            
+        
         }
     }
 
@@ -48,6 +50,8 @@ class SignInController: UIViewController {
             if error == nil{
                 print (" no error")
                 self.performSegue(withIdentifier: "LoginToPatientListSegue", sender: self)
+                
+               
             }
             else{
                 print ("error")

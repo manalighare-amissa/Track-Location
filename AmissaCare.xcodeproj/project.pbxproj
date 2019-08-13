@@ -14,7 +14,6 @@
 		1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */; };
 		1396A9B222EF40B9006DB40D /* PatientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B122EF40B9006DB40D /* PatientListController.swift */; };
 		1396A9B522EF4313006DB40D /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */; };
-		1396A9B822EF7A4C006DB40D /* PatientInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B722EF7A4C006DB40D /* PatientInfoController.swift */; };
 		1396A9BA22EF834A006DB40D /* PatientLocationAndInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */; };
 		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
 		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
@@ -53,7 +52,6 @@
 		1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
 		1396A9B122EF40B9006DB40D /* PatientListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListController.swift; sourceTree = "<group>"; };
 		1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerController.swift; sourceTree = "<group>"; };
-		1396A9B722EF7A4C006DB40D /* PatientInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoController.swift; sourceTree = "<group>"; };
 		1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLocationAndInfoController.swift; sourceTree = "<group>"; };
 		139FE30422D7C39D007823B8 /* AmissaCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AmissaCare.entitlements; sourceTree = "<group>"; };
 		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,12 +120,11 @@
 		1396A95F22E78A00006DB40D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */,
-				1396A9B722EF7A4C006DB40D /* PatientInfoController.swift */,
-				1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */,
-				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 				1370A5ED22D514D0008EB058 /* SignInController.swift */,
 				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
+				1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */,
+				1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */,
+				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
 				1396A9B122EF40B9006DB40D /* PatientListController.swift */,
 			);
 			path = "View Controllers";
@@ -437,7 +434,6 @@
 			files = (
 				1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */,
 				1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */,
-				1396A9B822EF7A4C006DB40D /* PatientInfoController.swift in Sources */,
 				1396A9BA22EF834A006DB40D /* PatientLocationAndInfoController.swift in Sources */,
 				13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */,
 				1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */,

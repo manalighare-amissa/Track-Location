@@ -15,6 +15,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
 
     
     @IBOutlet var superView: UIView!
+    @IBOutlet weak var barCodeView: UIView!
     @IBOutlet weak var barcodeScanSquare: UIImageView!
     var video = AVCaptureVideoPreviewLayer()
     
@@ -49,13 +50,17 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
         output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
         video = AVCaptureVideoPreviewLayer(session: session)
-        video.frame = view.layer.bounds
+        video.frame.size.height = barCodeView.frame.height + 60
+        video.frame.size.width = barCodeView.frame.width
         view.layer.addSublayer(video)
         
         self.view.bringSubviewToFront(barcodeScanSquare)
         
         session.startRunning()
        
+    }
+    @IBAction func goBackButtonTapped(_ sender: Any) {
+          self.performSegue(withIdentifier: "BackToPatientListSegue", sender: nil)
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -81,7 +86,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                         guard let userID = Auth.auth().currentUser?.uid
                             else { return }
                         
-                        self.patientRef.child("\(userID)").child("Patients").child("\(object.stringValue!)").setValue(alert?.textFields![0].text)
+                        self.patientRef.child("Caretaker").child("\(userID)").child("Patients").child("\(object.stringValue!)").setValue(alert?.textFields![0].text)
                         
                         self.performSegue(withIdentifier: "BackToPatientListSegue", sender: nil)
                         

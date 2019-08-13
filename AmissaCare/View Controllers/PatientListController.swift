@@ -27,16 +27,32 @@ class PatientListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.patientListTableView.delegate = self
+        self.patientListTableView.dataSource = self
+        
         patientRef = Database.database().reference()
         loadPatientList()
         
+    }
+    
+    @IBAction func signoutButtonTapped(_ sender: UIBarButtonItem) {
+        do {
+                  try Auth.auth().signOut()
+              }
+              catch let signOutError as NSError {
+                  print ("Error signing out: %@", signOutError)
+              }
+              
+              let storyboard = UIStoryboard(name: "Main", bundle: nil)
+              let initial = storyboard.instantiateInitialViewController()
+              UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
     func loadPatientList(){
         guard let userID = Auth.auth().currentUser?.uid
             else { return }
         
-        patientRef?.child(userID).child("Patients").observe(.value, with: { (DataSnapshot) in
+        patientRef?.child("Caretaker").child(userID).child("Patients").observe(.value, with: { (DataSnapshot) in
             let snapshot = DataSnapshot.value as? NSDictionary
 
             if snapshot != nil{
@@ -44,7 +60,6 @@ class PatientListController: UIViewController {
                 self.patientNames.append("\(snapshot![key]!)")
                 self.patientData.append("\(key)")
                 self.patientListTableView.reloadData()
-
             }
             
             }
@@ -76,6 +91,8 @@ extension PatientListController: UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
+    
 }
 
 extension PatientListController: UITableViewDataSource{

@@ -13,6 +13,7 @@ target 'AmissaCare' do
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'FloatingPanel'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'AmissaCareTests' do
     inherit! :search_paths

@@ -59,6 +59,7 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var registrationToken:String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationBar.topItem?.title = "\(PatientName!)"
@@ -119,47 +120,47 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
         
       
         
-//        let userID = Auth.auth().currentUser?.uid
-//
-//        ref?.child("Patient").child("\(patientID!)").child("Geofences").child("\(userID!)").observe(.value, with:{ (DataSnapshot) in
-//
-//            let snapshot = DataSnapshot.value as? NSDictionary
-//
-//            if snapshot != nil{
-//                let center = snapshot!["center"] as! NSDictionary
-//                self.geofenceLatitude = center["lat"] as! Double
-//                self.geofenceLongitude = center["long"] as! Double
-//
-//                let geofenceCenter = CLLocation(latitude: self.geofenceLatitude!, longitude: self.geofenceLongitude!)
-//                let geoCoder = CLGeocoder()
-//                geoCoder.reverseGeocodeLocation(geofenceCenter, completionHandler: {(data,error) -> Void in
-//                               let placeMarks = data as! [CLPlacemark]
-//                               let loc: CLPlacemark = placeMarks[0]
-//
-//                    self.mapView.centerCoordinate = geofenceCenter.coordinate
-//                               let city = loc.locality ?? ""
-//                               let Name = loc.name ?? ""
-//
-//
-//                               contentVC?.geofenceCenterTextField.text = "\(Name) \(city)"
-//                           })
-//
-//                contentVC?.radiusTextField.text = "\(snapshot!["radius"]!)"
-//
-//                // Remove old overlays if any
-//                let overlays = self.mapView.overlays
-//                self.mapView.removeOverlays(overlays)
-//
-//                // Show geofence region on the map
-//                let circle: MKOverlay = MKCircle(center: CLLocationCoordinate2DMake(self.geofenceLatitude!,self.geofenceLongitude!), radius: snapshot!["radius"] as! Double)
-//                self.mapView.addOverlay(circle)
-//
-//
-//
-//
-//            }
-//        })
-//
+        let userID = Auth.auth().currentUser?.uid
+        ref?.child("Patient").child("\(patientID!)").child("Geofences").child("\(userID!)").observe(.value, with:{ (DataSnapshot) in
+
+            let snapshot = DataSnapshot.value as? NSDictionary
+
+            if snapshot != nil{
+                let center = snapshot!["center"] as! NSDictionary
+                self.geofenceLatitude = center["lat"] as! Double
+                self.geofenceLongitude = center["long"] as! Double
+                self.geofenceRadius = snapshot!["radius"] as! Double
+
+                let geofenceCenter = CLLocation(latitude: self.geofenceLatitude!, longitude: self.geofenceLongitude!)
+                let geoCoder = CLGeocoder()
+                geoCoder.reverseGeocodeLocation(geofenceCenter, completionHandler: {(data,error) -> Void in
+                               let placeMarks = data as! [CLPlacemark]
+                               let loc: CLPlacemark = placeMarks[0]
+
+                    self.mapView.centerCoordinate = geofenceCenter.coordinate
+                               let city = loc.locality ?? ""
+                               let Name = loc.name ?? ""
+
+
+                               contentVC?.geofenceCenterTextField.text = "\(Name) \(city)"
+                           })
+
+                contentVC?.radiusTextField.text = "\(snapshot!["radius"]!)"
+
+                // Remove old overlays if any
+                let overlays = self.mapView.overlays
+                self.mapView.removeOverlays(overlays)
+
+                // Show geofence region on the map
+                let circle: MKOverlay = MKCircle(center: CLLocationCoordinate2DMake(self.geofenceLatitude!,self.geofenceLongitude!), radius: snapshot!["radius"] as! Double)
+                self.mapView.addOverlay(circle)
+
+
+
+
+            }
+        })
+
         
         ref?.child("Patient").child("\(patientID!)").child("location").observe(.value, with:{ (DataSnapshot) in
                   
@@ -177,7 +178,6 @@ class PatientLocationAndInfoController: UIViewController, FloatingPanelControlle
                   self.annotation.title = "\(self.PatientName!)'s Location"
                   
                   // MARK: Reverse geocoding for patient location
-                  
                   let center = CLLocation(latitude: self.plat!, longitude: self.plong!)
                   let geoCoder = CLGeocoder()
                   
@@ -309,9 +309,16 @@ extension PatientLocationAndInfoController: MKMapViewDelegate{
 }
 
 extension PatientLocationAndInfoController: PatientDetailViewDelegate{
+    func didTapLocateMe() {
+        fpc.move(to: .tip, animated: true)
+        centerViewOnUserLocation(self.geofenceRadius!)
+    }
+    
     func didTapAddGeofence() {
         fpc.move(to: .half, animated: true)
+        
     }
+    
     
     
     func addedRegion(_ radius: Double, _ address: String) {
@@ -405,7 +412,7 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     
     public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
         switch position {
-        case .full: return 50.0 // A top inset from safe area
+        case .full:return 50.0 // A top inset from safe area
         case .half: return 230.0 // A bottom inset from the safe area
         case .tip: return 85.0 // A bottom inset from the safe area
         default: return nil // Or `case .hidden: return nil`

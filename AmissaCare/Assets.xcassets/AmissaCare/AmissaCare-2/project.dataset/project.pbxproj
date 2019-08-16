@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		096D4180BD24003620C14191 /* Pods_AmissaCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */; };
+		131475AF22C53146008613D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131475AE22C53146008613D7 /* MapKit.framework */; };
+		1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5ED22D514D0008EB058 /* SignInController.swift */; };
+		1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370A5EF22D5189A008EB058 /* SignUpController.swift */; };
+		1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */; };
+		1396A9B222EF40B9006DB40D /* PatientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B122EF40B9006DB40D /* PatientListController.swift */; };
+		1396A9B522EF4313006DB40D /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */; };
+		1396A9BA22EF834A006DB40D /* PatientLocationAndInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */; };
+		13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7623622C126AD00D5F6D2 /* AppDelegate.swift */; };
+		13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623A22C126AD00D5F6D2 /* Main.storyboard */; };
+		13E7623E22C126AE00D5F6D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623D22C126AE00D5F6D2 /* Assets.xcassets */; };
+		13E7624122C126AE00D5F6D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */; };
+		13E7624C22C126AE00D5F6D2 /* AmissaCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7624B22C126AE00D5F6D2 /* AmissaCareTests.swift */; };
+		13E7625722C126AE00D5F6D2 /* AmissaCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E7625622C126AE00D5F6D2 /* AmissaCareUITests.swift */; };
+		13ECE75A22D3D12100A2A88C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */; };
+		2C201CBA83F0FCC9432D1F1C /* Pods_AmissaCareUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DE8BECAA3A6C669994A53 /* Pods_AmissaCareUITests.framework */; };
+		53EA56FAF823F3FF59072A99 /* Pods_AmissaCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB860510FF000F0DB397E0F0 /* Pods_AmissaCareTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13E7624822C126AE00D5F6D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13E7622B22C126AD00D5F6D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13E7623222C126AD00D5F6D2;
+			remoteInfo = AmissaCare;
+		};
+		13E7625322C126AE00D5F6D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13E7622B22C126AD00D5F6D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13E7623222C126AD00D5F6D2;
+			remoteInfo = AmissaCare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05DE546E6B87464E173BB6E1 /* Pods-AmissaCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCare.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCare/Pods-AmissaCare.debug.xcconfig"; sourceTree = "<group>"; };
+		131475AE22C53146008613D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		131475B022C55F86008613D7 /* EnteredRegion.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnteredRegion.gpx; sourceTree = "<group>"; };
+		1370A5ED22D514D0008EB058 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		1370A5EF22D5189A008EB058 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
+		1396A9B122EF40B9006DB40D /* PatientListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListController.swift; sourceTree = "<group>"; };
+		1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerController.swift; sourceTree = "<group>"; };
+		1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLocationAndInfoController.swift; sourceTree = "<group>"; };
+		139FE30422D7C39D007823B8 /* AmissaCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AmissaCare.entitlements; sourceTree = "<group>"; };
+		13E7623322C126AD00D5F6D2 /* AmissaCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmissaCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E7623622C126AD00D5F6D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		13E7623B22C126AD00D5F6D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		13E7623D22C126AE00D5F6D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		13E7624022C126AE00D5F6D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		13E7624222C126AE00D5F6D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13E7624722C126AE00D5F6D2 /* AmissaCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmissaCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E7624B22C126AE00D5F6D2 /* AmissaCareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmissaCareTests.swift; sourceTree = "<group>"; };
+		13E7624D22C126AE00D5F6D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13E7625222C126AE00D5F6D2 /* AmissaCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmissaCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E7625622C126AE00D5F6D2 /* AmissaCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmissaCareUITests.swift; sourceTree = "<group>"; };
+		13E7625822C126AE00D5F6D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D5FEF40A9ED45648FB75AFE /* Pods-AmissaCareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareUITests.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCareUITests/Pods-AmissaCareUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BB6066F41F3376C39E3FA6F /* Pods-AmissaCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareTests.debug.xcconfig"; path = "Target Support Files/Pods-AmissaCareTests/Pods-AmissaCareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F9EEEB13C0928E72DD8101C /* Pods-AmissaCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareTests.release.xcconfig"; path = "Target Support Files/Pods-AmissaCareTests/Pods-AmissaCareTests.release.xcconfig"; sourceTree = "<group>"; };
+		51C22FADFF64AC79A60C8B0A /* Pods-AmissaCareUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCareUITests.release.xcconfig"; path = "Target Support Files/Pods-AmissaCareUITests/Pods-AmissaCareUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmissaCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A320504DC676A66BA30F7F9F /* Pods-AmissaCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmissaCare.release.xcconfig"; path = "Target Support Files/Pods-AmissaCare/Pods-AmissaCare.release.xcconfig"; sourceTree = "<group>"; };
+		BF2DE8BECAA3A6C669994A53 /* Pods_AmissaCareUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmissaCareUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB860510FF000F0DB397E0F0 /* Pods_AmissaCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmissaCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13E7623022C126AD00D5F6D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				131475AF22C53146008613D7 /* MapKit.framework in Frameworks */,
+				096D4180BD24003620C14191 /* Pods_AmissaCare.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7624422C126AE00D5F6D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53EA56FAF823F3FF59072A99 /* Pods_AmissaCareTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7624F22C126AE00D5F6D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C201CBA83F0FCC9432D1F1C /* Pods_AmissaCareUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		131475AD22C53146008613D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				131475AE22C53146008613D7 /* MapKit.framework */,
+				5FA7298E9E6BB0EAA33FECAB /* Pods_AmissaCare.framework */,
+				FB860510FF000F0DB397E0F0 /* Pods_AmissaCareTests.framework */,
+				BF2DE8BECAA3A6C669994A53 /* Pods_AmissaCareUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1396A95F22E78A00006DB40D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1370A5ED22D514D0008EB058 /* SignInController.swift */,
+				1370A5EF22D5189A008EB058 /* SignUpController.swift */,
+				1396A9B322EF4313006DB40D /* BarcodeScannerController.swift */,
+				1396A9B922EF834A006DB40D /* PatientLocationAndInfoController.swift */,
+				1396A96222E8C3CC006DB40D /* PatientDetailViewController.swift */,
+				1396A9B122EF40B9006DB40D /* PatientListController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		13E7622A22C126AD00D5F6D2 = {
+			isa = PBXGroup;
+			children = (
+				131475B022C55F86008613D7 /* EnteredRegion.gpx */,
+				13E7623522C126AD00D5F6D2 /* AmissaCare */,
+				13E7624A22C126AE00D5F6D2 /* AmissaCareTests */,
+				13E7625522C126AE00D5F6D2 /* AmissaCareUITests */,
+				13E7623422C126AD00D5F6D2 /* Products */,
+				131475AD22C53146008613D7 /* Frameworks */,
+				A0C4C5AEB765076AD11CE24D /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		13E7623422C126AD00D5F6D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13E7623322C126AD00D5F6D2 /* AmissaCare.app */,
+				13E7624722C126AE00D5F6D2 /* AmissaCareTests.xctest */,
+				13E7625222C126AE00D5F6D2 /* AmissaCareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13E7623522C126AD00D5F6D2 /* AmissaCare */ = {
+			isa = PBXGroup;
+			children = (
+				139FE30422D7C39D007823B8 /* AmissaCare.entitlements */,
+				1396A95F22E78A00006DB40D /* View Controllers */,
+				13E7623622C126AD00D5F6D2 /* AppDelegate.swift */,
+				13E7623A22C126AD00D5F6D2 /* Main.storyboard */,
+				13E7623D22C126AE00D5F6D2 /* Assets.xcassets */,
+				13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */,
+				13E7624222C126AE00D5F6D2 /* Info.plist */,
+				13ECE75922D3D12100A2A88C /* GoogleService-Info.plist */,
+			);
+			path = AmissaCare;
+			sourceTree = "<group>";
+		};
+		13E7624A22C126AE00D5F6D2 /* AmissaCareTests */ = {
+			isa = PBXGroup;
+			children = (
+				13E7624B22C126AE00D5F6D2 /* AmissaCareTests.swift */,
+				13E7624D22C126AE00D5F6D2 /* Info.plist */,
+			);
+			path = AmissaCareTests;
+			sourceTree = "<group>";
+		};
+		13E7625522C126AE00D5F6D2 /* AmissaCareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				13E7625622C126AE00D5F6D2 /* AmissaCareUITests.swift */,
+				13E7625822C126AE00D5F6D2 /* Info.plist */,
+			);
+			path = AmissaCareUITests;
+			sourceTree = "<group>";
+		};
+		A0C4C5AEB765076AD11CE24D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05DE546E6B87464E173BB6E1 /* Pods-AmissaCare.debug.xcconfig */,
+				A320504DC676A66BA30F7F9F /* Pods-AmissaCare.release.xcconfig */,
+				4BB6066F41F3376C39E3FA6F /* Pods-AmissaCareTests.debug.xcconfig */,
+				4F9EEEB13C0928E72DD8101C /* Pods-AmissaCareTests.release.xcconfig */,
+				2D5FEF40A9ED45648FB75AFE /* Pods-AmissaCareUITests.debug.xcconfig */,
+				51C22FADFF64AC79A60C8B0A /* Pods-AmissaCareUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13E7623222C126AD00D5F6D2 /* AmissaCare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13E7625B22C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCare" */;
+			buildPhases = (
+				10F69B82D18C5C48AF8C5046 /* [CP] Check Pods Manifest.lock */,
+				13E7622F22C126AD00D5F6D2 /* Sources */,
+				13E7623022C126AD00D5F6D2 /* Frameworks */,
+				13E7623122C126AD00D5F6D2 /* Resources */,
+				772C7CDEDC42749F1B823A58 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AmissaCare;
+			productName = AmissaCare;
+			productReference = 13E7623322C126AD00D5F6D2 /* AmissaCare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		13E7624622C126AE00D5F6D2 /* AmissaCareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13E7625E22C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCareTests" */;
+			buildPhases = (
+				70BFE3F9BC2FD62299F38705 /* [CP] Check Pods Manifest.lock */,
+				13E7624322C126AE00D5F6D2 /* Sources */,
+				13E7624422C126AE00D5F6D2 /* Frameworks */,
+				13E7624522C126AE00D5F6D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13E7624922C126AE00D5F6D2 /* PBXTargetDependency */,
+			);
+			name = AmissaCareTests;
+			productName = AmissaCareTests;
+			productReference = 13E7624722C126AE00D5F6D2 /* AmissaCareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13E7625122C126AE00D5F6D2 /* AmissaCareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13E7626122C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCareUITests" */;
+			buildPhases = (
+				127AF79BAC082AFDB772E961 /* [CP] Check Pods Manifest.lock */,
+				13E7624E22C126AE00D5F6D2 /* Sources */,
+				13E7624F22C126AE00D5F6D2 /* Frameworks */,
+				13E7625022C126AE00D5F6D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13E7625422C126AE00D5F6D2 /* PBXTargetDependency */,
+			);
+			name = AmissaCareUITests;
+			productName = AmissaCareUITests;
+			productReference = 13E7625222C126AE00D5F6D2 /* AmissaCareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13E7622B22C126AD00D5F6D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Manali Ghare";
+				TargetAttributes = {
+					13E7623222C126AD00D5F6D2 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					13E7624622C126AE00D5F6D2 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 13E7623222C126AD00D5F6D2;
+					};
+					13E7625122C126AE00D5F6D2 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 13E7623222C126AD00D5F6D2;
+					};
+				};
+			};
+			buildConfigurationList = 13E7622E22C126AD00D5F6D2 /* Build configuration list for PBXProject "AmissaCare" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 13E7622A22C126AD00D5F6D2;
+			productRefGroup = 13E7623422C126AD00D5F6D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13E7623222C126AD00D5F6D2 /* AmissaCare */,
+				13E7624622C126AE00D5F6D2 /* AmissaCareTests */,
+				13E7625122C126AE00D5F6D2 /* AmissaCareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13E7623122C126AD00D5F6D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13E7624122C126AE00D5F6D2 /* LaunchScreen.storyboard in Resources */,
+				13ECE75A22D3D12100A2A88C /* GoogleService-Info.plist in Resources */,
+				13E7623E22C126AE00D5F6D2 /* Assets.xcassets in Resources */,
+				13E7623C22C126AD00D5F6D2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7624522C126AE00D5F6D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7625022C126AE00D5F6D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10F69B82D18C5C48AF8C5046 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmissaCare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		127AF79BAC082AFDB772E961 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmissaCareUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70BFE3F9BC2FD62299F38705 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmissaCareTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		772C7CDEDC42749F1B823A58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AmissaCare/Pods-AmissaCare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AmissaCare/Pods-AmissaCare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AmissaCare/Pods-AmissaCare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13E7622F22C126AD00D5F6D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1370A5F022D5189A008EB058 /* SignUpController.swift in Sources */,
+				1370A5EE22D514D0008EB058 /* SignInController.swift in Sources */,
+				1396A9BA22EF834A006DB40D /* PatientLocationAndInfoController.swift in Sources */,
+				13E7623722C126AD00D5F6D2 /* AppDelegate.swift in Sources */,
+				1396A96322E8C3CC006DB40D /* PatientDetailViewController.swift in Sources */,
+				1396A9B222EF40B9006DB40D /* PatientListController.swift in Sources */,
+				1396A9B522EF4313006DB40D /* BarcodeScannerController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7624322C126AE00D5F6D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13E7624C22C126AE00D5F6D2 /* AmissaCareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13E7624E22C126AE00D5F6D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13E7625722C126AE00D5F6D2 /* AmissaCareUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13E7624922C126AE00D5F6D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13E7623222C126AD00D5F6D2 /* AmissaCare */;
+			targetProxy = 13E7624822C126AE00D5F6D2 /* PBXContainerItemProxy */;
+		};
+		13E7625422C126AE00D5F6D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13E7623222C126AD00D5F6D2 /* AmissaCare */;
+			targetProxy = 13E7625322C126AE00D5F6D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13E7623A22C126AD00D5F6D2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13E7623B22C126AD00D5F6D2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		13E7623F22C126AE00D5F6D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13E7624022C126AE00D5F6D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		13E7625922C126AE00D5F6D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		13E7625A22C126AE00D5F6D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		13E7625C22C126AE00D5F6D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05DE546E6B87464E173BB6E1 /* Pods-AmissaCare.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AmissaCare/AmissaCare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37CYGYQ97U;
+				INFOPLIST_FILE = AmissaCare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCaretaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		13E7625D22C126AE00D5F6D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A320504DC676A66BA30F7F9F /* Pods-AmissaCare.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AmissaCare/AmissaCare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37CYGYQ97U;
+				INFOPLIST_FILE = AmissaCare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCaretaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		13E7625F22C126AE00D5F6D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BB6066F41F3376C39E3FA6F /* Pods-AmissaCareTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AmissaCareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmissaCare.app/AmissaCare";
+			};
+			name = Debug;
+		};
+		13E7626022C126AE00D5F6D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9EEEB13C0928E72DD8101C /* Pods-AmissaCareTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AmissaCareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmissaCare.app/AmissaCare";
+			};
+			name = Release;
+		};
+		13E7626222C126AE00D5F6D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D5FEF40A9ED45648FB75AFE /* Pods-AmissaCareUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AmissaCareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AmissaCare;
+			};
+			name = Debug;
+		};
+		13E7626322C126AE00D5F6D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51C22FADFF64AC79A60C8B0A /* Pods-AmissaCareUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AmissaCareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amissa.AmissaCareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AmissaCare;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13E7622E22C126AD00D5F6D2 /* Build configuration list for PBXProject "AmissaCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13E7625922C126AE00D5F6D2 /* Debug */,
+				13E7625A22C126AE00D5F6D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13E7625B22C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13E7625C22C126AE00D5F6D2 /* Debug */,
+				13E7625D22C126AE00D5F6D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13E7625E22C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13E7625F22C126AE00D5F6D2 /* Debug */,
+				13E7626022C126AE00D5F6D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13E7626122C126AE00D5F6D2 /* Build configuration list for PBXNativeTarget "AmissaCareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13E7626222C126AE00D5F6D2 /* Debug */,
+				13E7626322C126AE00D5F6D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 13E7622B22C126AD00D5F6D2 /* Project object */;
+}

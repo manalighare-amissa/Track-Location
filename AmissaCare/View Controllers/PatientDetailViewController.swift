@@ -11,6 +11,7 @@ import UIKit
 protocol  PatientDetailViewDelegate{
     func didTapAddGeofence( )
     func didTapEnterRadius()
+    func didTapLocateMe()
     func addedRegion(_ radius: Double,_ address: String)
 }
 
@@ -19,6 +20,7 @@ class PatientDetailViewController: UIViewController, UITextFieldDelegate{
     
     var patientDetailDelegate: PatientDetailViewDelegate!
     
+    @IBOutlet weak var navigationButton: UIButton!
     @IBOutlet weak var addressLabel1: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var radiusTextField: UITextField!{
@@ -40,6 +42,10 @@ class PatientDetailViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func enterRadiusTapped(_ sender: Any) {
         patientDetailDelegate.didTapEnterRadius()
+    }
+    
+    @IBAction func locateMeTapped(_ sender: Any) {
+        patientDetailDelegate.didTapLocateMe()
     }
     
     @IBAction func startMonitoringButtonTapped(_ sender: Any) {
